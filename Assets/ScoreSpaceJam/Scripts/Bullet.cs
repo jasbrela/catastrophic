@@ -5,8 +5,10 @@ namespace ScoreSpaceJam.Scripts
 {
     public class Bullet : MonoBehaviour
     {
+        [SerializeField] private float damage = 1f;
         [SerializeField] private float speed = 5f;
 
+        public float Damage => damage;
         private void Update()
         {
             if (!gameObject.activeInHierarchy) return;

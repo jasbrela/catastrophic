@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ScoreSpaceJam.Scripts.Waves
 {
@@ -10,6 +12,11 @@ namespace ScoreSpaceJam.Scripts.Waves
         [SerializeField] private float spawnRange;
 
         private int _count;
+
+        private void Start()
+        {
+            StartSpawning();
+        }
 
         private Vector3 GetRandomPointOutsideCameraView()
         {

@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace ScoreSpaceJam.Scripts
 {
     public class Health : MonoBehaviour
     {
+        public UnityEvent onDeath;
         [SerializeField] private Image healthBackground;
         [SerializeField] private float initialMaxHealth;
         private float maxHealth;
@@ -52,6 +54,8 @@ namespace ScoreSpaceJam.Scripts
 
         private void Die()
         {
+            onDeath?.Invoke();
+            
             currentHealth = 0;
             Debug.Log("Death", this);
         }
