@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 5604645098626354388}
   - component: {fileID: 4248133658642329337}
   - component: {fileID: 694196013282882320}
+  - component: {fileID: 2947625252415912156}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -336,6 +337,21 @@ MonoBehaviour:
   input: {fileID: 9059197660566657292}
   hand: {fileID: 9050467575622465095}
   flip: {fileID: 130148660909626853}
+--- !u!114 &2947625252415912156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154731214644025400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af413ed0f3234744b9a0b0c6d81f2447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzle: {fileID: 2030957035346398592}
+  bulletPool: {fileID: 0}
+  input: {fileID: 9059197660566657292}
 --- !u!1 &8907585803907306473
 GameObject:
   m_ObjectHideFlags: 0
