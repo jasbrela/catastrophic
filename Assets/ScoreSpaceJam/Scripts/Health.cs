@@ -1,0 +1,62 @@
+using System;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace ScoreSpaceJam.Scripts
+{
+    public class Health : MonoBehaviour
+    {
+        [SerializeField] private Image healthBackground;
+        [SerializeField] private float initialMaxHealth;
+        private float maxHealth;
+        private float currentHealth;
+
+        private void Start()
+        {
+            maxHealth = initialMaxHealth;
+            currentHealth = initialMaxHealth;
+            UpdateUI();
+            
+            Damage(20);
+        }
+
+        public void Heal(float amount)
+        {
+            currentHealth += amount;
+
+            if (currentHealth >= maxHealth)
+                currentHealth = maxHealth;
+            
+            UpdateUI();
+        }
+    
+        public void Damage(float amount)
+        {
+            currentHealth -= amount;
+        
+            if (currentHealth <= 0)
+                Die();
+            
+            UpdateUI();
+        }
+
+        private void UpdateUI()
+        {
+            if (healthBackground == null) return;
+            
+            if (maxHealth == 0)
+            {
+                Debug.Log("Failed to update the UI: Division by 0.");
+                return;
+            }
+            
+            healthBackground.fillAmount = currentHealth / maxHealth;
+        }
+
+        private void Die()
+        {
+            currentHealth = 0;
+            Debug.Log("Death", this);
+        }
+    }
+}
