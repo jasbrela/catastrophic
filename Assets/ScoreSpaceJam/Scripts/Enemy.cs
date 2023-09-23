@@ -16,7 +16,7 @@ namespace ScoreSpaceJam.Scripts
             health.onDeath.AddListener(Disable);
         }
 
-        private void Disable()
+        public void Disable()
         {
             Destroy(gameObject);
         }
@@ -24,16 +24,15 @@ namespace ScoreSpaceJam.Scripts
         private void Update()
         {
             if (_player == null) return;
-            transform.Translate(transform.position - _player.position * speed);
+            transform.position = Vector3.MoveTowards(transform.position, _player.position, speed * Time.deltaTime);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
+            Debug.Log("trigger");
             if (other.TryGetComponent(out Bullet bullet))
             {
                 health.Damage(bullet.Damage);
-                
-                Debug.Log("trigger ENTER bullet");
             }
         }
     }

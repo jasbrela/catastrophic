@@ -844,6 +844,10 @@ PrefabInstance:
       propertyPath: bulletPool
       value: 
       objectReference: {fileID: 4489631640659131125}
+    - target: {fileID: 4248133658642329337, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
+      propertyPath: speedMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6684325327077459122, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
       propertyPath: healthBackground
       value: 
