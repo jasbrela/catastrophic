@@ -9,9 +9,7 @@ namespace ScoreSpaceJam.Scripts.Player
         [SerializeField] private float speedMultiplier = 10f;
         [SerializeField] private PlayerInput input;
         [SerializeField] private Rigidbody2D rb2d;
-        [SerializeField] private Transform flip;
         private Vector3 _previousInput;
-        private Vector3 _defaultScale;
 
         void Start()
         {
@@ -23,8 +21,6 @@ namespace ScoreSpaceJam.Scripts.Player
             
             input.actions["Movement"].performed += SetMovement;
             input.actions["Movement"].canceled += ResetMovement;
-
-            _defaultScale = flip.localScale;
         }
 
         private void OnDisable()
@@ -36,11 +32,6 @@ namespace ScoreSpaceJam.Scripts.Player
         private void SetMovement(InputAction.CallbackContext ctx)
         {
             _previousInput = ctx.ReadValue<Vector2>();
-        
-            // Flip player
-            if (_previousInput.x == 0) return;
-            
-            flip.localScale = new Vector3(_defaultScale.x * _previousInput.x > 0 ? -1 : 1, _defaultScale.y, _defaultScale.z);
         }
 
         void FixedUpdate()
