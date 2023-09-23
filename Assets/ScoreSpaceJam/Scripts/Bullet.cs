@@ -7,6 +7,7 @@ namespace ScoreSpaceJam.Scripts
     {
         [SerializeField] private float damage = 1f;
         [SerializeField] private float speed = 5f;
+        [SerializeField] private float lifetime = 2f;
         [SerializeField] private Rigidbody2D rb;
 
         public float Damage => damage;
@@ -25,7 +26,7 @@ namespace ScoreSpaceJam.Scripts
 
         IEnumerator DisableAfterTime()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(lifetime);
             gameObject.SetActive(false);
         }
     }
