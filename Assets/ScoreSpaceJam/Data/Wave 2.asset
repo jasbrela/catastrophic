@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0.5
   enemies:
-  - enemy: {fileID: 5204184856995181532, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
+  - enemy: {fileID: 3663163075138483128, guid: 838cc25abfb8eb544b07f00090aa3113, type: 3}
     quantity: 2
-  - enemy: {fileID: 8229777415963345582, guid: b5d0ff52532e65944a33301e6503ae35, type: 3}
+  - enemy: {fileID: 3663163075138483128, guid: 4dc34b6f06c51e7488cb09bab9e8f8e4, type: 3}
     quantity: 2
-  - enemy: {fileID: 5204184856995181532, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
+  - enemy: {fileID: 3663163075138483128, guid: 838cc25abfb8eb544b07f00090aa3113, type: 3}
     quantity: 2
-  - enemy: {fileID: 8229777415963345582, guid: b5d0ff52532e65944a33301e6503ae35, type: 3}
+  - enemy: {fileID: 3663163075138483128, guid: 4dc34b6f06c51e7488cb09bab9e8f8e4, type: 3}
     quantity: 2

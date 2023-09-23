@@ -7,12 +7,14 @@ namespace ScoreSpaceJam.Scripts
     {
         [SerializeField] private float damage = 1f;
         [SerializeField] private float speed = 5f;
+        [SerializeField] private Rigidbody2D rb;
 
         public float Damage => damage;
-        private void Update()
+        private void FixedUpdate()
         {
             if (!gameObject.activeInHierarchy) return;
-        
+
+            // rb.velocity = transform.right * (speed * Time.deltaTime);
             transform.Translate(Vector3.right * (speed * Time.deltaTime));
         }
 
