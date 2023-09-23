@@ -1,6 +1,4 @@
 using System.Collections;
-using NaughtyAttributes;
-using ScoreSpaceJam.Scripts.Utils;
 using UnityEngine;
 
 namespace ScoreSpaceJam.Scripts.Waves
@@ -52,13 +50,12 @@ namespace ScoreSpaceJam.Scripts.Waves
             Gizmos.DrawWireCube(center, new Vector3(absBounds.x*2 + spawnRange*2, absBounds.y*2 + spawnRange*2, 0));
         }
         
-        [Button]
         public void StartSpawning()
         {
             StartCoroutine(Spawn());
         }
-
-        [Button]
+        
+        // DEBUG
         public void ForceSpawn()
         {
             Instantiate(waveManager.CurrentWave.Enemies[0].enemy, GetRandomPointOutsideCameraView(), transform.rotation);
@@ -69,8 +66,6 @@ namespace ScoreSpaceJam.Scripts.Waves
             while (_count < waveManager.CurrentWave.Size)
             {
                 yield return new WaitForSeconds(waveManager.CurrentWave.Delay);
-                
-                //Debug.Log("[Enemy Spawner]".Bold() + " Count: " + _count);
                 
                 var temp = 0;
                 foreach (var waveEnemy in waveManager.CurrentWave.Enemies)
