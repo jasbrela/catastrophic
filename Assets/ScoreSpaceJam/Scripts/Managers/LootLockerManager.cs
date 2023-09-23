@@ -14,7 +14,8 @@ namespace ScoreSpaceJam.Scripts.Managers
         private string playerIdentifier = null;
         private const string defaultLeaderboardKey = "dev_leaderboard";
 
-        // REVIEW: eu odeio tudo sobre isso
+
+        #region Session authentication and validation
         public async Task<bool> TryStartGuestSession()
         {
             LootLockerGuestSessionResponse response = await StartGuestSessionAsync();
@@ -42,9 +43,22 @@ namespace ScoreSpaceJam.Scripts.Managers
             return tcs.Task;
         }
 
-        public async Task<bool> SetPlayerName(string playerName)
+        bool ValidateSession()
         {
             if (!SessionStarted)
+            {
+                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Session has not started!");
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
+
+
+        public async Task<bool> SetPlayerName(string playerName)
+        {
+            if (!ValidateSession())
             {
                 Debug.LogWarning($"[{this.name}]: ".Bold() + $"Tried to set player name without valid session!");
                 return false;
@@ -75,7 +89,7 @@ namespace ScoreSpaceJam.Scripts.Managers
 
         public async Task<bool> SubmitToLeaderboard(int score, string leaderboardKey = defaultLeaderboardKey)
         {
-            if (!SessionStarted)
+            if (!ValidateSession())
             {
                 Debug.LogWarning($"[{this.name}]: ".Bold() + $"Tried to send score without valid session!");
                 return false;
@@ -97,6 +111,39 @@ namespace ScoreSpaceJam.Scripts.Managers
         {
             TaskCompletionSource<LootLockerSubmitScoreResponse> tcs = new();
             LootLockerSDKManager.SubmitScore(playerIdentifier, score, leaderboardKey, (response) =>
+            {
+                tcs.SetResult(response);
+            });
+
+            return tcs.Task;
+        }
+
+        // C#: Async methods cannot have ref, in or out parameters.
+        // in other words I cannot make this return bool and just have an out param;
+        // so this will just return null when it fails.
+        public async Task<LootLockerLeaderboardMember[]> GetLeaderboardScores(int entriesCount, string leaderboardKey = defaultLeaderboardKey)
+        {
+            if (!ValidateSession())
+            {
+                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Tried to get leaderboard scores without valid session!");
+                return null;
+            }
+
+            LootLockerGetScoreListResponse response = await GetScoreListAsync(entriesCount, leaderboardKey);
+
+            if (!response.success)
+            {
+                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Failed to get leaderboard scores with key {leaderboardKey}!");
+                return null;
+            }
+
+            return response.items;
+        }
+
+        private Task<LootLockerGetScoreListResponse> GetScoreListAsync(int entriesCount, string leaderboardKey)
+        {
+            TaskCompletionSource<LootLockerGetScoreListResponse> tcs = new();
+            LootLockerSDKManager.GetScoreList(leaderboardKey, entriesCount, (response) =>
             {
                 tcs.SetResult(response);
             });

@@ -22,6 +22,9 @@ namespace ScoreSpaceJam.Scripts.UI
         [SerializeField] private TMP_InputField scoreInputField;
         [SerializeField] private Button submitScoreButton;
 
+        [Header("Leaderboard")]
+        [SerializeField] private GameObject leaderboardGameObject;
+
         public async void OnPlayerLogin()
         {
             confirmLoginButton.interactable = false;
@@ -69,9 +72,12 @@ namespace ScoreSpaceJam.Scripts.UI
             if (!success)
             {
                 Debug.LogWarning($"[{this.name}]: ".Bold() + $"Failed to send score! Cancelling interface flow.");
+                submitScoreButton.interactable = true;
+                return;
             }
 
-            submitScoreButton.interactable = true;
+            leaderboardGameObject.SetActive(true);
+            submitScoreGameObject.SetActive(false);
         }
     }
 }
