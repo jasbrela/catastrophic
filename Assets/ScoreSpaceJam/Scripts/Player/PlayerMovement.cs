@@ -15,7 +15,7 @@ namespace ScoreSpaceJam.Scripts.Player
         {
             if (input == null)
             {
-                Debug.Log("[Player Movement]".Bold() +" Missing Dependencies", this);
+                Debug.Log("[PlayerMovement]".Bold() +" Missing Dependencies", this);
                 return;
             }
             

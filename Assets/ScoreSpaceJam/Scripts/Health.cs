@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +15,6 @@ namespace ScoreSpaceJam.Scripts
             maxHealth = initialMaxHealth;
             currentHealth = initialMaxHealth;
             UpdateUI();
-            
-            Damage(20);
         }
 
         public void Heal(float amount)

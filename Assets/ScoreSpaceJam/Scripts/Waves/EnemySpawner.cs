@@ -67,8 +67,6 @@ namespace ScoreSpaceJam.Scripts.Waves
             {
                 yield return new WaitForSeconds(waveManager.CurrentWave.Delay);
                 
-                //Debug.Log("[Enemy Spawner]".Bold() + " Count: " + _count);
-                
                 var temp = 0;
                 foreach (var waveEnemy in waveManager.CurrentWave.Enemies)
                 {
