@@ -12,10 +12,16 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
         private bool allowShooting = true;
         Coroutine shootingCoroutine = null;
 
-        protected override void Initialize()
+        private void OnEnable()
         {
             input.actions["Shoot"].performed += ButtonDown;
             input.actions["Shoot"].canceled += ButtonUp;
+        }
+
+        private void OnDisable()
+        {
+            input.actions["Shoot"].performed -= ButtonDown;
+            input.actions["Shoot"].canceled -= ButtonUp;
         }
 
         private void ButtonDown(InputAction.CallbackContext ctx)
