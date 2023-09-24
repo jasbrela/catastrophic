@@ -1,21 +1,27 @@
 using System;
 using System.Collections;
+using ScoreSpaceJam.Scripts.Managers;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ScoreSpaceJam.Scripts.Waves
 {
     public class EnemySpawner : MonoBehaviour
     {
+        [SerializeField] private TextMeshProUGUI killCountUI;
+        [SerializeField] private GameManager manager;
         [SerializeField] private WaveController waveManager;
         [SerializeField] private Vector2 absBounds;
         [SerializeField] private float spawnRange;
 
+        private int _killCount;
         private int _count;
 
         private void Start()
         {
-            StartSpawning();
+            waveManager.onStartWave.AddListener(StartSpawning);
         }
 
         private Vector3 GetRandomPointOutsideCameraView()
@@ -56,16 +62,13 @@ namespace ScoreSpaceJam.Scripts.Waves
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(center, new Vector3(absBounds.x*2 + spawnRange*2, absBounds.y*2 + spawnRange*2, 0));
         }
-        
-        public void StartSpawning()
+
+        private void StartSpawning()
         {
+            _count = 0;
+            _killCount = 0;
+            
             StartCoroutine(Spawn());
-        }
-        
-        // DEBUG
-        public void ForceSpawn()
-        {
-            Instantiate(waveManager.CurrentWave.Enemies[0].enemy, GetRandomPointOutsideCameraView(), transform.rotation);
         }
 
         private IEnumerator Spawn()
@@ -75,21 +78,39 @@ namespace ScoreSpaceJam.Scripts.Waves
                 yield return new WaitForSeconds(waveManager.CurrentWave.Delay);
                 
                 var temp = 0;
+
                 foreach (var waveEnemy in waveManager.CurrentWave.Enemies)
                 {
                     temp += waveEnemy.quantity;
                     if (_count < temp)
                     {
-                        Instantiate(waveEnemy.enemy, GetRandomPointOutsideCameraView(), transform.rotation);
+                        Enemy enemy = Instantiate(waveEnemy.enemy, GetRandomPointOutsideCameraView(), transform.rotation);
+                        enemy.gameManager = manager;
+                        
+                        enemy.RegisterOnDeathEvent(OnEnemyKilled);
                         
                         _count++;
+                        UpdateUI();
                         break;
                     }
                 }
             }
+        }
 
-            waveManager.NextWave();
-            _count = 0;
+        private void OnEnemyKilled()
+        {
+            _killCount++;
+            UpdateUI();
+            
+            if (_killCount == _count)
+            {
+                manager.OnFinishWave();
+            }
+        }
+
+        private void UpdateUI()
+        {
+            killCountUI.text = $"{_killCount} / {_count}";
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ScoreSpaceJam.Scripts.Waves
         [Serializable]
         public class WaveEnemy
         {
-            public GameObject enemy;
+            public Enemy enemy;
             public int quantity;
         }
 
@@ -25,6 +25,7 @@ namespace ScoreSpaceJam.Scripts.Waves
         
         private void Awake()
         {
+            _size = 0;
             foreach (WaveEnemy enemy in enemies)
             {
                 _size += enemy.quantity;

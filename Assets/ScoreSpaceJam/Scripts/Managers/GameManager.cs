@@ -5,7 +5,8 @@ namespace ScoreSpaceJam.Scripts.Managers
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private GameState currentState = GameState.PLAYING;
+        [SerializeField] private GameState currentState = GameState.SHOPPING;
+        [SerializeField] private GameObject shoppingUI;
         [SerializeField] private PlayerInput input;
         
         public GameState CurrentState => currentState;
@@ -15,11 +16,23 @@ namespace ScoreSpaceJam.Scripts.Managers
             input.actions["Pause"].performed += TogglePause;
         }
 
-        public void StartGame()
+        public void OnStartWave()
         {
             currentState = GameState.PLAYING;
+            shoppingUI.SetActive(false);
         }
 
+        public void OnFinishWave()
+        {
+            currentState = GameState.SHOPPING;
+            shoppingUI.SetActive(true);
+        }
+
+        public void GameOver()
+        {
+            currentState = GameState.GAME_OVER;
+        }
+        
         public void TogglePause(InputAction.CallbackContext ctx)
         {
             if (currentState == GameState.PAUSED)

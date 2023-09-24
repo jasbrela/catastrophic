@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 1
   enemies:
-  - enemy: {fileID: 3663163075138483128, guid: 838cc25abfb8eb544b07f00090aa3113, type: 3}
+  - enemy: {fileID: 8353021538926831748, guid: 838cc25abfb8eb544b07f00090aa3113, type: 3}
     quantity: 4
-  - enemy: {fileID: 3663163075138483128, guid: 4dc34b6f06c51e7488cb09bab9e8f8e4, type: 3}
+  - enemy: {fileID: 8353021538926831748, guid: 4dc34b6f06c51e7488cb09bab9e8f8e4, type: 3}
     quantity: 4

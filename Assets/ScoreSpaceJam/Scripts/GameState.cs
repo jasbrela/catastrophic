@@ -5,5 +5,6 @@ namespace ScoreSpaceJam.Scripts
         PLAYING,
         PAUSED,
         GAME_OVER,
+        SHOPPING,
     }
 }

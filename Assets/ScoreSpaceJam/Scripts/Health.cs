@@ -57,7 +57,6 @@ namespace ScoreSpaceJam.Scripts
             onDeath?.Invoke();
             
             currentHealth = 0;
-            Debug.Log("Death", this);
         }
     }
 }

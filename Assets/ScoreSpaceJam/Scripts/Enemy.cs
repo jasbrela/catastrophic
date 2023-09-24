@@ -1,6 +1,7 @@
-using System;
+using ScoreSpaceJam.Scripts.Managers;
 using ScoreSpaceJam.Scripts.Player;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ScoreSpaceJam.Scripts
 {
@@ -10,10 +11,17 @@ namespace ScoreSpaceJam.Scripts
         [SerializeField] private float speed;
         private Transform _player;
 
+        public GameManager gameManager;
+
         private void Start()
         {
             _player = FindObjectOfType<PlayerMovement>().transform;
             health.onDeath.AddListener(Disable);
+        }
+
+        public void RegisterOnDeathEvent(UnityAction call)
+        {
+            health.onDeath.AddListener(call);
         }
 
         public void Disable()
@@ -24,6 +32,7 @@ namespace ScoreSpaceJam.Scripts
         private void Update()
         {
             if (_player == null) return;
+            if (gameManager == null || gameManager.CurrentState != GameState.PLAYING) return;
             transform.position = Vector3.MoveTowards(transform.position, _player.position, speed * Time.deltaTime);
         }
 
