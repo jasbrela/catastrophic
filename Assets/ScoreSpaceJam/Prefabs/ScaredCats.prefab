@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 1689870380432298758}
   m_Layer: 0
   m_Name: ScaredCats
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,6 +368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664795cd6dddfe741a334c334d71ca52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialMaxHealth: 200
+  healthBackground: {fileID: 0}
+  col2D: {fileID: 184967543411990833}
+  invulnerabilityDuration: 1
   onHit:
     m_PersistentCalls:
       m_Calls: []
@@ -386,8 +390,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  healthBackground: {fileID: 0}
-  initialMaxHealth: 1000
 --- !u!1 &8807520485255496019
 GameObject:
   m_ObjectHideFlags: 0

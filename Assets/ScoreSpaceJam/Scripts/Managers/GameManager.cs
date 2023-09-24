@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace ScoreSpaceJam.Scripts.Managers
@@ -10,11 +11,14 @@ namespace ScoreSpaceJam.Scripts.Managers
         [SerializeField] private GameState currentState = GameState.SHOPPING;
         [SerializeField] private TextMeshProUGUI currencyText;
         [SerializeField] private TextMeshProUGUI scoreText;
-        [SerializeField] private GameObject shoppingUI;
+        [SerializeField] private Shop.Shop shop;
         [SerializeField] private GameObject pauseUI;
         [SerializeField] private PlayerInput input;
+
+        public UnityEvent onChangeState;
         
         public GameState CurrentState => currentState;
+        public int CurrentMoney => _currency;
 
         private GameState _previousState;
         private int _score;
@@ -22,6 +26,7 @@ namespace ScoreSpaceJam.Scripts.Managers
 
         private void Start()
         {
+            shop.manager = this;
             pauseUI.SetActive(false);
             input.actions["Pause"].performed += TogglePause;
 
@@ -37,7 +42,7 @@ namespace ScoreSpaceJam.Scripts.Managers
         public void OnStartWave()
         {
             currentState = GameState.PLAYING;
-            shoppingUI.SetActive(false);
+            shop.HideUI();
             
             OnChangeState();
         }
@@ -45,7 +50,8 @@ namespace ScoreSpaceJam.Scripts.Managers
         public void OnFinishWave()
         {
             currentState = GameState.SHOPPING;
-            shoppingUI.SetActive(true);
+            shop.EnableShopButtons();
+            shop.ShowUI();
             
             OnChangeState();
         }
@@ -93,10 +99,16 @@ namespace ScoreSpaceJam.Scripts.Managers
             currencyText.text = currency.ToString();
         }
 
+        public void SpendCurrency(int value)
+        {
+            _currency -= value;
+            currencyText.text = _currency.ToString();
+        }
+
         private void OnChangeState()
         {
             //input.SwitchCurrentActionMap(currentState != GameState.PLAYING ? "UI" : "Game");
-            
+            onChangeState.Invoke();
             stateDebug.text = currentState.ToString();
         }
     }
