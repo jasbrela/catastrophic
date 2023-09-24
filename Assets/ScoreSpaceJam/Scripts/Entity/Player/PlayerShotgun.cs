@@ -1,28 +1,16 @@
 using ScoreSpaceJam.Scripts.Bullets;
-using ScoreSpaceJam.Scripts.Managers;
+using ScoreSpaceJam.Scripts.Entity.Player;
 using ScoreSpaceJam.Scripts.Utils;
 using UnityEngine;
 
-namespace ScoreSpaceJam.Scripts.Entity
+public class PlayerShotgun : PlayerGun
 {
-    public abstract class BaseGun : MonoBehaviour
+    public float angleVariationPerBullet = 15;
+    public int bulletCountPerShot = 3;
+
+    public override void Shoot(Vector3 target)
     {
-        [SerializeField] protected GameManager manager;
-        [SerializeField] protected float firingRate = 0.5f;
-
-        [SerializeField] protected Transform muzzle;
-        [SerializeField] protected ObjectPool bulletPool;
-
-        public float FiringRate => firingRate;
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        protected virtual void Initialize() { }
-
-        public virtual void Shoot(Vector3 target)
+        for (int i = 0; i < bulletCountPerShot; i++)
         {
             var go = bulletPool.GetObject();
 
@@ -41,7 +29,7 @@ namespace ScoreSpaceJam.Scripts.Entity
             bullet.manager = manager;
 
             var dir = target - Camera.main.WorldToScreenPoint(transform.position);
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + Random.Range(-angleVariationPerBullet, angleVariationPerBullet);
 
             go.transform.position = muzzle.position;
             go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);

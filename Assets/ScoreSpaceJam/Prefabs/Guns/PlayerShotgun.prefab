@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7226416515906170773
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 463771959953359031, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: firingRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198849568567781349, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.277
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045193483373836190, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_Name
+      value: Muzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698916751630159336, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_Name
+      value: PlayerShotgun
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 463771959953359031, guid: f9d6d473657cae449953b482904d920c, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6698916751630159336, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4607461025574391732}
+  m_SourcePrefab: {fileID: 100100000, guid: f9d6d473657cae449953b482904d920c, type: 3}
+--- !u!1 &4088765725618872957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6698916751630159336, guid: f9d6d473657cae449953b482904d920c, type: 3}
+  m_PrefabInstance: {fileID: 7226416515906170773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4607461025574391732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4088765725618872957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811c806d480a95647be41e4c8f76703c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  firingRate: 0.5
+  muzzle: {fileID: 8848026808648108144}
+  bulletPool: {fileID: 0}
+  input: {fileID: 0}
+  angleVariationPerBullet: 15
+  bulletCountPerShot: 3
+--- !u!4 &8848026808648108144 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2198849568567781349, guid: f9d6d473657cae449953b482904d920c, type: 3}
+  m_PrefabInstance: {fileID: 7226416515906170773}
+  m_PrefabAsset: {fileID: 0}
