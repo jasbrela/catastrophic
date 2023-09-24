@@ -10,6 +10,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
         [SerializeField] private PlayerInput input;
         private bool isHolding;
         private bool allowShooting = true;
+        Coroutine shootingCoroutine = null;
 
         protected override void Initialize()
         {
@@ -20,9 +21,10 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
         private void ButtonDown(InputAction.CallbackContext ctx)
         {
             isHolding = true;
-            StartCoroutine(KeepShooting());
+            if (shootingCoroutine == null)
+                shootingCoroutine = StartCoroutine(KeepShooting());
         }
-        
+
         private void ButtonUp(InputAction.CallbackContext ctx)
         {
             isHolding = false;
@@ -37,6 +39,8 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
                 yield return new WaitForSeconds(FiringRate);
                 allowShooting = true;
             }
+
+            shootingCoroutine = null;
         }
-    } 
+    }
 }

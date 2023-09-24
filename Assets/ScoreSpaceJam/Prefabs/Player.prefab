@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33da12fd42d80334c98d18e1151949f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killCountUI: {fileID: 0}
+  remainingEnemiesUI: {fileID: 0}
   manager: {fileID: 0}
   waveManager: {fileID: 0}
   absBounds: {x: 10, y: 8}
@@ -271,12 +271,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1037821513697418601}
+  - component: {fileID: 5734643209054490478}
   - component: {fileID: 9059197660566657292}
-  - component: {fileID: 5604645098626354388}
   - component: {fileID: 4248133658642329337}
   - component: {fileID: 694196013282882320}
   - component: {fileID: 2947625252415912156}
   - component: {fileID: 6684325327077459122}
+  - component: {fileID: 5604645098626354388}
   - component: {fileID: 2281397735430184545}
   - component: {fileID: 5054452162515266640}
   m_Layer: 0
@@ -303,6 +304,20 @@ Transform:
   - {fileID: 6747020039992080386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5734643209054490478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154731214644025400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efb3b6e9bff7f1418da52fdb1c1221c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invulnerabilityTime: 1
+  col: {fileID: 5054452162515266640}
 --- !u!114 &9059197660566657292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,33 +348,6 @@ MonoBehaviour:
   m_DefaultActionMap: Game
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!50 &5604645098626354388
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8154731214644025400}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!114 &4248133658642329337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,9 +375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf09e6e412810e74d9e52e2145a41c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 9059197660566657292}
   hand: {fileID: 9050467575622465095}
   flip: {fileID: 130148660909626853}
+  input: {fileID: 9059197660566657292}
 --- !u!114 &2947625252415912156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af413ed0f3234744b9a0b0c6d81f2447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  firingRate: 0.5
   muzzle: {fileID: 2030957035346398592}
   bulletPool: {fileID: 0}
   input: {fileID: 9059197660566657292}
@@ -417,11 +407,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664795cd6dddfe741a334c334d71ca52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5734643209054490478}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5734643209054490478}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   healthBackground: {fileID: 0}
   initialMaxHealth: 100
+--- !u!50 &5604645098626354388
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154731214644025400}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!95 &2281397735430184545
 Animator:
   serializedVersion: 5
@@ -472,7 +516,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.16521916, y: -0.0771022}

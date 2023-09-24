@@ -9,6 +9,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
         [SerializeField] private int score;
         [SerializeField] private Health health;
         [SerializeField] private float speed;
+        [SerializeField] private float damage;
         private Transform _player;
         private Transform _base;
 
@@ -18,7 +19,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
         {
             _player = GameObject.FindWithTag("Player").transform;
             _base = GameObject.FindWithTag("Base").transform;
-            
+
             //health.onDeath.AddListener(Disable);
         }
 
@@ -43,19 +44,34 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
         private Vector3 GetClosestTarget()
         {
             var currentPos = transform.position;
-            
+
             if (Vector3.Distance(currentPos, _player.position) >
                 Vector3.Distance(currentPos, _base.position)) return _base.position;
             return _player.position;
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void TriggerLogic(Collider2D other)
         {
             if (other.TryGetComponent(out Bullet bullet))
             {
                 health.Damage(bullet.Damage);
                 bullet.OnHit();
             }
+            else if (other.gameObject.TryGetComponent(out Health health))
+            {
+                health.Damage(damage);
+                Debug.Log("Hit!");
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            TriggerLogic(other);
+        }
+
+        void OnTriggerStay2D(Collider2D other)
+        {
+            TriggerLogic(other);
         }
     }
 }
