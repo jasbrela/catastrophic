@@ -1,7 +1,5 @@
-using System;
 using ScoreSpaceJam.Scripts.Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace ScoreSpaceJam.Scripts.Shop
 {
@@ -9,12 +7,15 @@ namespace ScoreSpaceJam.Scripts.Shop
     {
         [SerializeField] private GameObject shoppingUI;
         
+        [Header("Gun")]
         [SerializeField] private SaleableData firstGun;
         [SerializeField] private SaleableUI gunUI;
         
+        [Header("Upgrade")]
         [SerializeField] private SaleableData firstUpgrade;
         [SerializeField] private SaleableUI upgradeUI;
         
+        [Header("Turret")]
         [SerializeField] private SaleableData firstTurret;
         [SerializeField] private SaleableUI turretUI;
         
@@ -66,9 +67,9 @@ namespace ScoreSpaceJam.Scripts.Shop
 
         private void ToggleButtonsVisibility(bool visible)
         {
-            gunUI.gameObject.SetActive(visible);
-            upgradeUI.gameObject.SetActive(visible);
-            turretUI.gameObject.SetActive(visible);
+            if (manager.CurrentMoney > currentGun.price) gunUI.gameObject.SetActive(visible);
+            if (manager.CurrentMoney > currentUpgrade.price) upgradeUI.gameObject.SetActive(visible);
+            if (manager.CurrentMoney > currentTurret.price) turretUI.gameObject.SetActive(visible);
         }
 
         private void UpdateDisplay()
