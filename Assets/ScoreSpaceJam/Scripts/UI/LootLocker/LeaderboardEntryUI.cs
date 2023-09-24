@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace ScoreSpaceJam.Scripts.UI.LootLockerDemoScene
+namespace ScoreSpaceJam.Scripts.UI.LootLocker
 {
     public class LeaderboardEntryUI : MonoBehaviour
     {

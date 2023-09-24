@@ -1,19 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using LootLocker.Requests;
 using ScoreSpaceJam.Scripts.Utils;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 namespace ScoreSpaceJam.Scripts.Managers
 {
     public class LootLockerManager : MonoBehaviour
     {
-        public bool SessionStarted { get; private set; } = false;
+        [SerializeField] private Button leaderboard;
+        public bool SessionStarted { get; private set; }
 
-        private string playerIdentifier = null;
-        private const string defaultLeaderboardKey = "dev_leaderboard";
+        private string playerIdentifier;
+        private const string DefaultLeaderboardKey = "dev_leaderboard";
 
+        private async void Start()
+        {
+            leaderboard.interactable = false;
+            
+            await TryStartGuestSession();
+        }
 
         #region Session authentication and validation
         public async Task<bool> TryStartGuestSession()
@@ -23,12 +29,13 @@ namespace ScoreSpaceJam.Scripts.Managers
 
             if (!response.success)
             {
-                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Failed to start guest session!");
+                Debug.LogWarning($"[{name}]: ".Bold() + $"Failed to start guest session!");
                 return SessionStarted;
             }
 
-            Debug.Log($"[{this.name}]: ".Bold() + $"Guest session successfully started!");
+            Debug.Log($"[{name}]: ".Bold() + $"Guest session successfully started!");
             playerIdentifier = response.player_identifier;
+            leaderboard.interactable = true;
             return SessionStarted;
         }
 
@@ -47,7 +54,7 @@ namespace ScoreSpaceJam.Scripts.Managers
         {
             if (!SessionStarted)
             {
-                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Session has not started!");
+                Debug.LogWarning($"[{name}]: ".Bold() + $"Session has not started!");
                 return false;
             }
 
@@ -60,7 +67,7 @@ namespace ScoreSpaceJam.Scripts.Managers
         {
             if (!ValidateSession())
             {
-                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Tried to set player name without valid session!");
+                Debug.LogWarning($"[{name}]: ".Bold() + $"Tried to set player name without valid session!");
                 return false;
             }
 
@@ -68,11 +75,11 @@ namespace ScoreSpaceJam.Scripts.Managers
 
             if (!response.success)
             {
-                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Failed to set player name!");
+                Debug.LogWarning($"[{name}]: ".Bold() + $"Failed to set player name!");
                 return false;
             }
 
-            Debug.Log($"[{this.name}]: ".Bold() + $"Player name set to {playerName}!");
+            Debug.Log($"[{name}]: ".Bold() + $"Player name set to {playerName}!");
             return true;
         }
 
@@ -87,11 +94,11 @@ namespace ScoreSpaceJam.Scripts.Managers
             return tcs.Task;
         }
 
-        public async Task<bool> SubmitToLeaderboard(int score, string leaderboardKey = defaultLeaderboardKey)
+        public async Task<bool> SubmitToLeaderboard(int score, string leaderboardKey = DefaultLeaderboardKey)
         {
             if (!ValidateSession())
             {
-                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Tried to send score without valid session!");
+                Debug.LogWarning($"[{name}]: ".Bold() + $"Tried to send score without valid session!");
                 return false;
             }
 
@@ -99,11 +106,11 @@ namespace ScoreSpaceJam.Scripts.Managers
 
             if (!response.success)
             {
-                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Failed to send score to leaderboard with key {leaderboardKey}!");
+                Debug.LogWarning($"[{name}]: ".Bold() + $"Failed to send score to leaderboard with key {leaderboardKey}!");
                 return false;
             }
 
-            Debug.Log($"[{this.name}]: ".Bold() + $"Score sent to leaderboard with key {leaderboardKey}!");
+            Debug.Log($"[{name}]: ".Bold() + $"Score sent to leaderboard with key {leaderboardKey}!");
             return true;
         }
 
@@ -121,11 +128,11 @@ namespace ScoreSpaceJam.Scripts.Managers
         // C#: Async methods cannot have ref, in or out parameters.
         // in other words I cannot make this return bool and just have an out param;
         // so this will just return null when it fails.
-        public async Task<LootLockerLeaderboardMember[]> GetLeaderboardScores(int entriesCount, string leaderboardKey = defaultLeaderboardKey)
+        public async Task<LootLockerLeaderboardMember[]> GetLeaderboardScores(int entriesCount, string leaderboardKey = DefaultLeaderboardKey)
         {
             if (!ValidateSession())
             {
-                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Tried to get leaderboard scores without valid session!");
+                Debug.LogWarning($"[{name}]: ".Bold() + $"Tried to get leaderboard scores without valid session!");
                 return null;
             }
 
@@ -133,7 +140,7 @@ namespace ScoreSpaceJam.Scripts.Managers
 
             if (!response.success)
             {
-                Debug.LogWarning($"[{this.name}]: ".Bold() + $"Failed to get leaderboard scores with key {leaderboardKey}!");
+                Debug.LogWarning($"[{name}]: ".Bold() + $"Failed to get leaderboard scores with key {leaderboardKey}!");
                 return null;
             }
 

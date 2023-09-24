@@ -90,6 +90,7 @@ namespace ScoreSpaceJam.Scripts.Managers
         public void Score(int score)
         {
             _score += score;
+            PlayerPrefs.SetInt("Score", _score);
             scoreText.text = _score.ToString();
         }
 

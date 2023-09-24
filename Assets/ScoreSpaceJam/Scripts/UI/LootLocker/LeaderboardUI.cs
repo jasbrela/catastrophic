@@ -2,7 +2,7 @@ using LootLocker.Requests;
 using ScoreSpaceJam.Scripts.Managers;
 using UnityEngine;
 
-namespace ScoreSpaceJam.Scripts.UI.LootLockerDemoScene
+namespace ScoreSpaceJam.Scripts.UI.LootLocker
 {
     public class LeaderboardUI : MonoBehaviour
     {
@@ -22,7 +22,7 @@ namespace ScoreSpaceJam.Scripts.UI.LootLockerDemoScene
                 Destroy(child.gameObject);
             }
 
-            LootLockerLeaderboardMember[] members = await lootLockerManager.GetLeaderboardScores(10);
+            LootLockerLeaderboardMember[] members = await lootLockerManager.GetLeaderboardScores(9);
 
             foreach (LootLockerLeaderboardMember member in members)
             {
