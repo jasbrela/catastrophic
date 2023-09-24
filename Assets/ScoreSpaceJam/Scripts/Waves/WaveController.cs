@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ScoreSpaceJam.Scripts.Managers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ namespace ScoreSpaceJam.Scripts.Waves
 {
     public class WaveController : MonoBehaviour
     {
+        [SerializeField] private TextMeshProUGUI currentWaveText;
         [SerializeField] private GameManager manager;
         [SerializeField] private PlayerInput input;
         [SerializeField] private List<WaveData> waves = new();
@@ -39,6 +41,7 @@ namespace ScoreSpaceJam.Scripts.Waves
             {
                 _current = waves[currentIndex];
                 manager.OnStartWave();
+                currentWaveText.text = (currentIndex + 1).ToString();
                 onStartWave?.Invoke();
             }
             else

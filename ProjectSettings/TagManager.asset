@@ -49,3 +49,12 @@ TagManager:
   - name: Foreground
     uniqueID: 2793476685
     locked: 0
+  - name: ScaredCats
+    uniqueID: 267707849
+    locked: 0
+  - name: Player
+    uniqueID: 3102728675
+    locked: 0
+  - name: UI
+    uniqueID: 363504781
+    locked: 0

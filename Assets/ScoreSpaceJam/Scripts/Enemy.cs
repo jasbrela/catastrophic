@@ -1,5 +1,4 @@
 using ScoreSpaceJam.Scripts.Managers;
-using ScoreSpaceJam.Scripts.Player;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,12 +9,15 @@ namespace ScoreSpaceJam.Scripts
         [SerializeField] private Health health;
         [SerializeField] private float speed;
         private Transform _player;
+        private Transform _base;
 
         public GameManager gameManager;
 
         private void Start()
         {
-            _player = FindObjectOfType<PlayerMovement>().transform;
+            _player = GameObject.FindWithTag("Player").transform;
+            _base = GameObject.FindWithTag("Base").transform;
+            
             health.onDeath.AddListener(Disable);
         }
 
@@ -33,7 +35,16 @@ namespace ScoreSpaceJam.Scripts
         {
             if (_player == null) return;
             if (gameManager == null || gameManager.CurrentState != GameState.PLAYING) return;
-            transform.position = Vector3.MoveTowards(transform.position, _player.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, GetClosestTarget(), speed * Time.deltaTime);
+        }
+
+        private Vector3 GetClosestTarget()
+        {
+            var currentPos = transform.position;
+            
+            if (Vector3.Distance(currentPos, _player.position) >
+                Vector3.Distance(currentPos, _base.position)) return _base.position;
+            return _player.position;
         }
 
         private void OnTriggerEnter2D(Collider2D other)

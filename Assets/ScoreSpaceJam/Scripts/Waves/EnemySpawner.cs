@@ -9,8 +9,8 @@ using Random = UnityEngine.Random;
 namespace ScoreSpaceJam.Scripts.Waves
 {
     public class EnemySpawner : MonoBehaviour
-    {
-        [SerializeField] private TextMeshProUGUI killCountUI;
+    { 
+        [SerializeField] private TextMeshProUGUI remainingEnemiesUI;
         [SerializeField] private GameManager manager;
         [SerializeField] private WaveController waveManager;
         [SerializeField] private Vector2 absBounds;
@@ -22,6 +22,7 @@ namespace ScoreSpaceJam.Scripts.Waves
         private void Start()
         {
             waveManager.onStartWave.AddListener(StartSpawning);
+            remainingEnemiesUI.text = "";
         }
 
         private Vector3 GetRandomPointOutsideCameraView()
@@ -110,7 +111,8 @@ namespace ScoreSpaceJam.Scripts.Waves
 
         private void UpdateUI()
         {
-            killCountUI.text = $"{_killCount} / {_count}";
+            remainingEnemiesUI.enabled = waveManager.CurrentWave.Size != _killCount;
+            remainingEnemiesUI.text = $"{waveManager.CurrentWave.Size - _killCount} enemies remaining.";
         }
     }
 }
