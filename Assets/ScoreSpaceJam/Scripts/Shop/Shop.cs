@@ -28,7 +28,7 @@ namespace ScoreSpaceJam.Scripts.Shop
 
         private void Start()
         {
-            ToggleButtonsVisibility(false);
+            ToggleButtonsVisibility(false, true);
             
             currentGun = firstGun;
             currentUpgrade = firstUpgrade;
@@ -75,11 +75,11 @@ namespace ScoreSpaceJam.Scripts.Shop
             UpdateDisplay();
         }
 
-        private void ToggleButtonsVisibility(bool visible)
+        private void ToggleButtonsVisibility(bool visible, bool force = false)
         {
-            if (manager.CurrentMoney > currentGun.price) gunUI.gameObject.SetActive(visible);
-            if (manager.CurrentMoney > currentUpgrade.price) upgradeUI.gameObject.SetActive(visible);
-            if (manager.CurrentMoney > currentTurret.price) turretUI.gameObject.SetActive(visible);
+            if (force || manager.CurrentMoney > currentGun.price) gunUI.gameObject.SetActive(visible);
+            if (force || manager.CurrentMoney > currentUpgrade.price) upgradeUI.gameObject.SetActive(visible);
+            if (force || manager.CurrentMoney > currentTurret.price) turretUI.gameObject.SetActive(visible);
         }
 
         private void UpdateDisplay()

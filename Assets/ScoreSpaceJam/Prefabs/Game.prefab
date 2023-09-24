@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoppingUI: {fileID: 3160246908515532089}
-  inventory: {fileID: 0}
+  inventory: {fileID: 6270932121133026514}
   firstGun: {fileID: 11400000, guid: 0f1f7d486916a984689aec7f9b901be7, type: 2}
   gunUI: {fileID: 6331990610618953588}
   firstUpgrade: {fileID: 11400000, guid: 47f0c7300ef616842a575e4be07345d2, type: 2}
@@ -1297,6 +1297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &965264904059445864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 600805807139876089, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+  m_PrefabInstance: {fileID: 374699140800384657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3160246908515532089 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3380023211693781928, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
@@ -1910,6 +1915,8 @@ MonoBehaviour:
   guns:
   - {fileID: 7447248236129445465}
   input: {fileID: 4316601178502308323}
+  manager: {fileID: 6751613137016704668}
+  shopTooltip: {fileID: 965264904059445864}
 --- !u!114 &4316601178502308323 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9059197660566657292, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
