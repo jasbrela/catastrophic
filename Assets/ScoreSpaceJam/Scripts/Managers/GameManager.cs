@@ -32,7 +32,7 @@ namespace ScoreSpaceJam.Scripts.Managers
 
             currencyText.text = _currency.ToString();
             scoreText.text = _score.ToString();
-            shop.EnableShopButtons();
+
 #if !UNITY_EDITOR
             stateDebug.enabled = false;
 #endif
