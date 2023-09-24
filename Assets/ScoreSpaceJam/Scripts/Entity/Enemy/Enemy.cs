@@ -2,7 +2,7 @@ using ScoreSpaceJam.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace ScoreSpaceJam.Scripts
+namespace ScoreSpaceJam.Scripts.Entity.Enemy
 {
     public class Enemy : MonoBehaviour
     {

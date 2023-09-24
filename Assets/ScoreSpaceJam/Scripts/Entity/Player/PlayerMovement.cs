@@ -2,7 +2,7 @@ using ScoreSpaceJam.Scripts.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace ScoreSpaceJam.Scripts.Player
+namespace ScoreSpaceJam.Scripts.Entity.Player
 {
     public class PlayerMovement : MonoBehaviour
     {

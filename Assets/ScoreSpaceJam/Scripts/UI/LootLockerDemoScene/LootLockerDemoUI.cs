@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using ScoreSpaceJam.Scripts.Utils;
 using ScoreSpaceJam.Scripts.Managers;
+using ScoreSpaceJam.Scripts.Utils;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace ScoreSpaceJam.Scripts.UI
+namespace ScoreSpaceJam.Scripts.UI.LootLockerDemoScene
 {
     public class LootLockerDemoUI : MonoBehaviour
     {

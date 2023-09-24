@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using LootLocker.Requests;
 using ScoreSpaceJam.Scripts.Managers;
 using UnityEngine;
 
-namespace ScoreSpaceJam.Scripts.UI
+namespace ScoreSpaceJam.Scripts.UI.LootLockerDemoScene
 {
     public class LeaderboardUI : MonoBehaviour
     {

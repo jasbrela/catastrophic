@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using ScoreSpaceJam.Scripts.Entity.Enemy;
 using ScoreSpaceJam.Scripts.Managers;
 using TMPro;
 using UnityEngine;

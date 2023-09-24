@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ScoreSpaceJam.Scripts.Entity.Enemy;
 using UnityEngine;
 
 namespace ScoreSpaceJam.Scripts.Waves
