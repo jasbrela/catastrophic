@@ -6,10 +6,9 @@ namespace ScoreSpaceJam.Scripts.Bullets
 {
     public class BaseBullet : MonoBehaviour
     {
-        [SerializeField] private float damage = 1f;
+        [SerializeField] protected float damage = 1f;
         [SerializeField] private float speed = 5f;
         [SerializeField] private float lifetime = 2f;
-        [SerializeField] private Rigidbody2D rb;
 
         [HideInInspector] public GameManager manager;
 
