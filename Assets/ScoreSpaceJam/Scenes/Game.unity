@@ -123,6 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &1425278536 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2633666343062824748, guid: 4ff28843198ffb847a4616d1d05fb21b, type: 3}
+  m_PrefabInstance: {fileID: 4964094315149501346}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811c806d480a95647be41e4c8f76703c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1608234913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4681166861963005127, guid: 4ff28843198ffb847a4616d1d05fb21b, type: 3}
+  m_PrefabInstance: {fileID: 4964094315149501346}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af413ed0f3234744b9a0b0c6d81f2447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1781830651
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +551,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6270932121133026514, guid: 4ff28843198ffb847a4616d1d05fb21b, type: 3}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 1425278536}
+    - target: {fileID: 6270932121133026514, guid: 4ff28843198ffb847a4616d1d05fb21b, type: 3}
+      propertyPath: guns.Array.data[2]
+      value: 
+      objectReference: {fileID: 1608234913}
     - target: {fileID: 6295737492314980117, guid: 4ff28843198ffb847a4616d1d05fb21b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
