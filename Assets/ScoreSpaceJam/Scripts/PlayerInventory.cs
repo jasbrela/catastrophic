@@ -27,7 +27,7 @@ namespace ScoreSpaceJam.Scripts
             input.actions["NextWeapon"].performed += NextWeapon;
             input.actions["PreviousWeapon"].performed += PreviousWeapon;
             
-            shopTooltip.SetActive(unlockedGunsQuantity > 1);
+            shopTooltip.SetActive(false);
             
             manager.onChangeState.AddListener(OnChangeState);
         }
@@ -44,6 +44,8 @@ namespace ScoreSpaceJam.Scripts
         {
             if (guns.Count == unlockedGunsQuantity) return;
             unlockedGunsQuantity++;
+            
+            shopTooltip.SetActive(true);
         }
 
         public void PlaceTurret()
