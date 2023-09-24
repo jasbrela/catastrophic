@@ -27,7 +27,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Turret
                 while (manager.CurrentState != GameState.PLAYING) yield return null;
                 while (ordered.Length == 0) yield return null;
                 
-                gun.Shoot(ordered[0].transform.position);
+                gun.Shoot(Camera.main.WorldToScreenPoint(ordered[0].transform.position));
                 yield return new WaitForSecondsRealtime(gun.FiringRate);
             }
         }
@@ -55,7 +55,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Turret
                 if (t != null) break;
                 
                 col.TryGetComponent(out t);
-                Rotate(t.position);
+                Rotate(Camera.main.WorldToScreenPoint(t.position));
             }
         }
     }
