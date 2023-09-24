@@ -700,6 +700,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2137799174311655685, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137799174311655685, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137799174311655685, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1222935992585976003}
+    - target: {fileID: 2137799174311655685, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137799174311655685, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137799174311655685, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScoreSpaceJam.Scripts.Shop.Shop, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137799174311655685, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2198139955788038052, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1096,6 +1124,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7325213764822385655, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325213764822385655, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325213764822385655, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1222935992585976003}
+    - target: {fileID: 7325213764822385655, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325213764822385655, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyGunUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325213764822385655, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScoreSpaceJam.Scripts.Shop.Shop, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325213764822385655, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7386961921068811606, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1195,6 +1251,34 @@ PrefabInstance:
     - target: {fileID: 8791260193242912225, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839149644120466116, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839149644120466116, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839149644120466116, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1222935992585976003}
+    - target: {fileID: 8839149644120466116, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839149644120466116, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839149644120466116, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScoreSpaceJam.Scripts.Shop.Shop, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839149644120466116, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

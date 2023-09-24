@@ -32,38 +32,31 @@ namespace ScoreSpaceJam.Scripts.Shop
             currentUpgrade = firstUpgrade;
             currentTurret = firstTurret;
         }
-
-        public void BuyGun()
+        
+        private SaleableData BuySaleable(SaleableData data, SaleableUI ui)
         {
-            if (manager.CurrentMoney > currentGun.price)
+            if (manager.CurrentMoney < data.price) return data;
+            
+            manager.SpendCurrency(data.price);
+
+            data = data.nextSaleable;
+                
+            if (data == null)
             {
-                currentGun = currentGun.nextSaleable;
-                if (currentGun == null) gunUI.gameObject.SetActive(false);
+                ui.gameObject.SetActive(false);
+                return null;
             }
+                
+            ui.Display(data);
+            return data;
         }
         
-        public void BuyGunUpgrade()
-        {
-            if (manager.CurrentMoney > currentUpgrade.price)
-            {
-                currentUpgrade = currentUpgrade.nextSaleable;
-                if (currentUpgrade == null) upgradeUI.gameObject.SetActive(false);
-            }
-        }
-        
-        public void BuyTurret()
-        {
-            if (manager.CurrentMoney > currentTurret.price)
-            {
-                currentTurret = currentTurret.nextSaleable;
-                if (currentTurret == null) turretUI.gameObject.SetActive(false);
-            }
-        }
+        public void BuyGun() => currentGun = BuySaleable(currentGun, upgradeUI);
+        public void BuyGunUpgrade() => currentUpgrade = BuySaleable(currentUpgrade, gunUI);
+        public void BuyTurret() => currentTurret = BuySaleable(currentTurret, turretUI);
 
-        public void ShowUI()
-        {
-            shoppingUI.gameObject.SetActive(true);
-        }
+        public void ShowUI() => shoppingUI.gameObject.SetActive(true);
+        public void HideUI() => shoppingUI.gameObject.SetActive(false);
 
         public void EnableShopButtons()
         {
@@ -85,9 +78,6 @@ namespace ScoreSpaceJam.Scripts.Shop
             turretUI.Display(currentTurret);
         }
         
-        public void HideUI()
-        {
-            shoppingUI.gameObject.SetActive(false);
-        }
+        
     }
 }

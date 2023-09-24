@@ -22,7 +22,7 @@ namespace ScoreSpaceJam.Scripts.Managers
 
         private GameState _previousState;
         private int _score;
-        private int _currency;
+        private int _currency = 10;
 
         private void Start()
         {
@@ -30,9 +30,9 @@ namespace ScoreSpaceJam.Scripts.Managers
             pauseUI.SetActive(false);
             input.actions["Pause"].performed += TogglePause;
 
-            currencyText.text = "0";
-            scoreText.text = "0";
-
+            currencyText.text = _currency.ToString();
+            scoreText.text = _score.ToString();
+            shop.EnableShopButtons();
 #if !UNITY_EDITOR
             stateDebug.enabled = false;
 #endif
