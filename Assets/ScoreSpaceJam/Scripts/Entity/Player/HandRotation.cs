@@ -7,7 +7,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
     {
         [SerializeField] private PlayerInput input;
 
-        protected override void SetUpControls()
+        protected override void Initialize()
         {
             input.actions["Rotation"].performed += OnRotate;
         }

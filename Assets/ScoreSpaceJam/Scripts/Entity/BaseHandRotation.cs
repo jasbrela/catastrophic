@@ -12,10 +12,10 @@ namespace ScoreSpaceJam.Scripts.Entity
         void Start()
         {
             _defaultScale = flip.localScale;
-            SetUpControls();
+            Initialize();
         }
         
-        protected virtual void SetUpControls() { }
+        protected virtual void Initialize() { }
 
         protected void Rotate(Vector3 target)
         {

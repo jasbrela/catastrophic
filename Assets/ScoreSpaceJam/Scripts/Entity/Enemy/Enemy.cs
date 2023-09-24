@@ -11,7 +11,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
         private Transform _player;
         private Transform _base;
 
-        public GameManager gameManager;
+        [HideInInspector] public GameManager gameManager;
 
         private void Start()
         {

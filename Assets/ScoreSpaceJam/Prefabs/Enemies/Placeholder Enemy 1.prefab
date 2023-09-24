@@ -64,6 +64,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Placeholder Enemy 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6720990016889194878, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720990016889194878, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6403101
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720990016889194878, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.16509432
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,44 +1,42 @@
+using System.Collections;
 using ScoreSpaceJam.Scripts.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ScoreSpaceJam.Scripts.Entity.Player
 {
-    public class PlayerGun : MonoBehaviour
+    public class PlayerGun : BaseGun
     {
-        [SerializeField] private Transform muzzle;
-        [SerializeField] private ObjectPool bulletPool;
         [SerializeField] private PlayerInput input;
+        private bool isHolding;
+        private bool allowShooting = true;
 
-        private void Start()
+        protected override void Initialize()
         {
-            input.actions["Shoot"].performed += Shoot;
+            input.actions["Shoot"].performed += ButtonDown;
+            input.actions["Shoot"].canceled += ButtonUp;
         }
 
-        private void Shoot(InputAction.CallbackContext ctx)
+        private void ButtonDown(InputAction.CallbackContext ctx)
         {
-            var go = bulletPool.GetObject();
-
-            if (!go.TryGetComponent(out Bullet bullet))
-            {
-                Debug.Log("[PlayerGun]".Bold() + " Missing Bullet script in Bullet Pool's prefab");
-                return;
-            }
-            
-            if (go == null)
-            {
-                // negative feedback
-                return;
-            }
-            
-            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            
-            go.transform.position = muzzle.position;
-            go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            go.SetActive(true);
-            bullet.OnShoot();
+            isHolding = true;
+            StartCoroutine(KeepShooting());
         }
-    }
+        
+        private void ButtonUp(InputAction.CallbackContext ctx)
+        {
+            isHolding = false;
+        }
+
+        private IEnumerator KeepShooting()
+        {
+            while (isHolding)
+            {
+                if (allowShooting) Shoot(Input.mousePosition);
+                allowShooting = false;
+                yield return new WaitForSeconds(FiringRate);
+                allowShooting = true;
+            }
+        }
+    } 
 }
