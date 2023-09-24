@@ -96,7 +96,7 @@ namespace ScoreSpaceJam.Scripts.Managers
         public void AddCurrency(int currency)
         {
             _currency += currency;
-            currencyText.text = currency.ToString();
+            currencyText.text = _currency.ToString();
         }
 
         public void SpendCurrency(int value)
