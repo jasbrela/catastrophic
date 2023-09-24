@@ -6,6 +6,7 @@ namespace ScoreSpaceJam.Scripts.Shop
     public class Shop : MonoBehaviour
     {
         [SerializeField] private GameObject shoppingUI;
+        [SerializeField] private PlayerInventory inventory;
         
         [Header("Gun")]
         [SerializeField] private SaleableData firstGun;
@@ -52,7 +53,16 @@ namespace ScoreSpaceJam.Scripts.Shop
             return data;
         }
         
-        public void BuyGun() => currentGun = BuySaleable(currentGun, upgradeUI);
+        public void BuyGun()
+        {
+            var item = BuySaleable(currentGun, upgradeUI);
+            
+            if (item == currentGun) return;
+            
+            currentGun = item;
+            inventory.UnlockWeapon();
+        }
+
         public void BuyGunUpgrade() => currentUpgrade = BuySaleable(currentUpgrade, gunUI);
         public void BuyTurret() => currentTurret = BuySaleable(currentTurret, turretUI);
 
