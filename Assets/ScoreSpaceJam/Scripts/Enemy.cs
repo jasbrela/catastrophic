@@ -29,7 +29,6 @@ namespace ScoreSpaceJam.Scripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("trigger");
             if (other.TryGetComponent(out Bullet bullet))
             {
                 health.Damage(bullet.Damage);
