@@ -8,10 +8,14 @@ namespace ScoreSpaceJam.Scripts.Managers
     {
         [SerializeField] private TextMeshProUGUI stateDebug;
         [SerializeField] private GameState currentState = GameState.SHOPPING;
+        
+        [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private GameObject shoppingUI;
         [SerializeField] private GameObject pauseUI;
+        
         [SerializeField] private PlayerInput input;
 
+        private int _score;
         private GameState _previousState;
         
         public GameState CurrentState => currentState;
@@ -20,6 +24,8 @@ namespace ScoreSpaceJam.Scripts.Managers
         {
             pauseUI.SetActive(false);
             input.actions["Pause"].performed += TogglePause;
+
+            scoreText.text = "0";
 
 #if !UNITY_EDITOR
             stateDebug.enabled = false;
@@ -72,6 +78,12 @@ namespace ScoreSpaceJam.Scripts.Managers
             currentState = _previousState;
             
             stateDebug.text = currentState.ToString();
+        }
+
+        public void Score(int score)
+        {
+            _score += score;
+            scoreText.text = _score.ToString();
         }
     }
 }

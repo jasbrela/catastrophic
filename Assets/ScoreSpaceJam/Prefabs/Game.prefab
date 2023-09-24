@@ -848,6 +848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateDebug: {fileID: 8984615896698987626}
   currentState: 3
+  scoreText: {fileID: 4534988121660847691}
   shoppingUI: {fileID: 3160246908515532089}
   pauseUI: {fileID: 3209083561843127228}
   input: {fileID: 4316601178502308323}
@@ -1436,6 +1437,17 @@ GameObject:
 --- !u!114 &3327623339653393778 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3106680198047458275, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+  m_PrefabInstance: {fileID: 374699140800384657}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4534988121660847691 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4313517472171489498, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
   m_PrefabInstance: {fileID: 374699140800384657}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

@@ -6,6 +6,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
 {
     public class Enemy : MonoBehaviour
     {
+        [SerializeField] private int score;
         [SerializeField] private Health health;
         [SerializeField] private float speed;
         private Transform _player;
@@ -18,7 +19,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
             _player = GameObject.FindWithTag("Player").transform;
             _base = GameObject.FindWithTag("Base").transform;
             
-            health.onDeath.AddListener(Disable);
+            //health.onDeath.AddListener(Disable);
         }
 
         public void RegisterOnDeathEvent(UnityAction call)
@@ -28,6 +29,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
 
         public void Disable()
         {
+            gameManager.Score(score);
             Destroy(gameObject);
         }
 
