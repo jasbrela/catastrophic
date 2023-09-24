@@ -11,6 +11,7 @@ namespace ScoreSpaceJam.Scripts
         [SerializeField] private Image healthBackground;
         [SerializeField] private float initialMaxHealth;
         private float maxHealth;
+        public float MaxHealth { get => maxHealth; }
         private float currentHealth;
 
         private void Start()

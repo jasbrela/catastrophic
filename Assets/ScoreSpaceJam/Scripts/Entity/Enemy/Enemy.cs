@@ -10,6 +10,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
         [SerializeField] private Health health;
         [SerializeField] private float speed;
         [SerializeField] private float damage;
+        [SerializeField] private bool destroyOnCollide;
         private Transform _player;
         private Transform _base;
 
@@ -57,10 +58,11 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
                 health.Damage(bullet.Damage);
                 bullet.OnHit();
             }
-            else if (other.gameObject.TryGetComponent(out Health health))
+            else if (other.gameObject.TryGetComponent(out Health otherHealth))
             {
-                health.Damage(damage);
-                Debug.Log("Hit!");
+                otherHealth.Damage(damage);
+                if (destroyOnCollide)
+                    this.health.Damage(health.MaxHealth);
             }
         }
 
