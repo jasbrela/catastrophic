@@ -22,6 +22,12 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
         {
             input.actions["Shoot"].performed -= ButtonDown;
             input.actions["Shoot"].canceled -= ButtonUp;
+
+            if (shootingCoroutine != null)
+            {
+                StopCoroutine(shootingCoroutine);
+                shootingCoroutine = null;
+            }
         }
 
         private void ButtonDown(InputAction.CallbackContext ctx)
