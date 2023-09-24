@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 6875100996255887550}
   - component: {fileID: 657172245328674978}
   - component: {fileID: 4595728874900396958}
+  - component: {fileID: -2173085730398545346}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Turret
@@ -368,12 +369,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 2901576669544084055}
   flip: {fileID: 6058363292623327733}
-  manager: {fileID: 0}
   gun: {fileID: 4595728874900396958}
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
   radius: 4
+  manager: {fileID: 0}
 --- !u!114 &657172245328674978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,11 +387,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664795cd6dddfe741a334c334d71ca52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialMaxHealth: 100
+  healthBackground: {fileID: 0}
+  col2D: {fileID: 0}
+  invulnerabilityDuration: 0
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  healthBackground: {fileID: 0}
-  initialMaxHealth: 100
 --- !u!114 &4595728874900396958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +413,21 @@ MonoBehaviour:
   firingRate: 0.5
   muzzle: {fileID: 5328506565323491728}
   bulletPool: {fileID: 0}
+--- !u!114 &-2173085730398545346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663505350253288488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a289d6955c920459ac9f0ac69c6fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  gun: {fileID: 4595728874900396958}
+  handRot: {fileID: 6875100996255887550}
 --- !u!1 &3333748721923102713
 GameObject:
   m_ObjectHideFlags: 0

@@ -570,6 +570,7 @@ MonoBehaviour:
   upgradeUI: {fileID: 3448950236506969478}
   firstTurret: {fileID: 11400000, guid: 7c246b6baaf5bd24e96150cdd7e443f7, type: 2}
   turretUI: {fileID: 3521732618182145205}
+  priceMultiplier: 0.5
   manager: {fileID: 6751613137016704668}
 --- !u!1001 &297829848482145424
 PrefabInstance:
@@ -1912,6 +1913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205d8f3e33b5d1743a981b9ee8979834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretPrefab: {fileID: -2173085730398545346, guid: 49660832e5b7c5144b5a3ae7e563cb2e, type: 3}
   guns:
   - {fileID: 7447248236129445465}
   input: {fileID: 4316601178502308323}

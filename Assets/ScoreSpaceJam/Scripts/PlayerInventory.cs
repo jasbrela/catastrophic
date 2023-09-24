@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ScoreSpaceJam.Scripts.Entity;
+using ScoreSpaceJam.Scripts.Entity.Turret;
 using ScoreSpaceJam.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,10 @@ namespace ScoreSpaceJam.Scripts
 {
     public class PlayerInventory : MonoBehaviour
     {
+        [Header("Turret")]
+        [SerializeField] private Turret turretPrefab;
+        
+        [Header("Guns")]
         [SerializeField] private List<BaseGun> guns;
         [SerializeField] private PlayerInput input;
         [SerializeField] private GameManager manager;
@@ -22,7 +27,7 @@ namespace ScoreSpaceJam.Scripts
             input.actions["NextWeapon"].performed += NextWeapon;
             input.actions["PreviousWeapon"].performed += PreviousWeapon;
             
-            shopTooltip.SetActive(unlockedGunsQuantity > 0);
+            shopTooltip.SetActive(unlockedGunsQuantity > 1);
             
             manager.onChangeState.AddListener(OnChangeState);
         }
@@ -39,6 +44,14 @@ namespace ScoreSpaceJam.Scripts
         {
             if (guns.Count == unlockedGunsQuantity) return;
             unlockedGunsQuantity++;
+        }
+
+        public void PlaceTurret()
+        {
+            var t = transform;
+            
+            Turret turret = Instantiate(turretPrefab, t.position, t.rotation);
+            turret.RegisterGameManager(manager);
         }
 
         private void NextWeapon(InputAction.CallbackContext callbackContext)

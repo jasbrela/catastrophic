@@ -7,7 +7,7 @@ namespace ScoreSpaceJam.Scripts.Entity
 {
     public abstract class BaseGun : MonoBehaviour
     {
-        [SerializeField] protected GameManager manager;
+        public GameManager manager;
         [SerializeField] protected float firingRate = 0.5f;
 
         [SerializeField] protected Transform muzzle;

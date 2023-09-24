@@ -7,10 +7,10 @@ namespace ScoreSpaceJam.Scripts.Entity.Turret
 {
     public class TurretHandRotation : BaseHandRotation
     {
-        [SerializeField] private GameManager manager;
         [SerializeField] private BaseGun gun;
         [SerializeField] private LayerMask targetLayer;
         [SerializeField] private float radius;
+        [HideInInspector] public GameManager manager;
 
         private readonly Collider2D[] results = new Collider2D[5];
         private Collider2D[] ordered;
@@ -22,6 +22,8 @@ namespace ScoreSpaceJam.Scripts.Entity.Turret
 
         private IEnumerator Shoot()
         {
+            while (manager == null) yield return null;
+            
             while (manager.CurrentState != GameState.GAME_OVER)
             {
                 while (manager.CurrentState != GameState.PLAYING) yield return null;

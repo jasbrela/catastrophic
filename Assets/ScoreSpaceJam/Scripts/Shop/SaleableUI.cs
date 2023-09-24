@@ -17,5 +17,12 @@ namespace ScoreSpaceJam.Scripts.Shop
             description.text = data.description;
             price.text = data.price.ToString();
         }
+        
+        public void Display(SaleableData data, int overridePrice)
+        {
+            title.text = data.title;
+            description.text = data.description;
+            price.text = overridePrice.ToString();
+        }
     }
 }
