@@ -36,6 +36,8 @@ namespace ScoreSpaceJam.Scripts.Shop
             currentGun = firstGun;
             currentUpgrade = firstUpgrade;
             currentTurret = firstTurret;
+            
+            upgradeUI.gameObject.SetActive(false);
         }
         
         private SaleableData BuySaleable(SaleableData data, SaleableUI ui)
@@ -58,7 +60,7 @@ namespace ScoreSpaceJam.Scripts.Shop
         
         public void BuyGun()
         {
-            var item = BuySaleable(currentGun, upgradeUI);
+            var item = BuySaleable(currentGun, gunUI);
             
             if (item == currentGun) return;
             
@@ -66,10 +68,10 @@ namespace ScoreSpaceJam.Scripts.Shop
             inventory.UnlockWeapon();
         }
 
-        public void BuyGunUpgrade() => currentUpgrade = BuySaleable(currentUpgrade, gunUI);
+        public void BuyGunUpgrade() => currentUpgrade = BuySaleable(currentUpgrade, upgradeUI);
         public void BuyTurret()
         {
-            var price = currentTurret.price + currentTurret.price * turretCount;
+            var price = Mathf.CeilToInt( currentTurret.price + currentTurret.price * priceMultiplier * turretCount);
             
             if (manager.CurrentMoney < price) return;
             
@@ -77,7 +79,7 @@ namespace ScoreSpaceJam.Scripts.Shop
             
             turretCount++;
             
-            price = currentTurret.price + currentTurret.price * turretCount;
+            price = Mathf.CeilToInt( currentTurret.price + currentTurret.price * priceMultiplier * turretCount);
             
             turretUI.Display(currentTurret, price);
             
@@ -96,14 +98,14 @@ namespace ScoreSpaceJam.Scripts.Shop
         private void ToggleButtonsVisibility(bool visible, bool force = false)
         {
             if (force || manager.CurrentMoney > currentGun.price) gunUI.gameObject.SetActive(visible);
-            if (force || manager.CurrentMoney > currentUpgrade.price) upgradeUI.gameObject.SetActive(visible);
+            //if (force || manager.CurrentMoney > currentUpgrade.price) upgradeUI.gameObject.SetActive(visible);
             if (force || manager.CurrentMoney > currentTurret.price) turretUI.gameObject.SetActive(visible);
         }
 
         private void UpdateDisplay()
         {
             gunUI.Display(currentGun);
-            upgradeUI.Display(currentUpgrade);
+            //upgradeUI.Display(currentUpgrade);
             turretUI.Display(currentTurret);
         }
         

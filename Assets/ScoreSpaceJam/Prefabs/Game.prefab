@@ -566,7 +566,7 @@ MonoBehaviour:
   inventory: {fileID: 6270932121133026514}
   firstGun: {fileID: 11400000, guid: 0f1f7d486916a984689aec7f9b901be7, type: 2}
   gunUI: {fileID: 6331990610618953588}
-  firstUpgrade: {fileID: 11400000, guid: 47f0c7300ef616842a575e4be07345d2, type: 2}
+  firstUpgrade: {fileID: 0}
   upgradeUI: {fileID: 3448950236506969478}
   firstTurret: {fileID: 11400000, guid: 7c246b6baaf5bd24e96150cdd7e443f7, type: 2}
   turretUI: {fileID: 3521732618182145205}
@@ -674,6 +674,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1571409209904958334, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00012207031
+      objectReference: {fileID: 0}
     - target: {fileID: 2089914664122879520, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -761,6 +765,10 @@ PrefabInstance:
     - target: {fileID: 2250022395485173353, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2624881957058353592, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63.49109
       objectReference: {fileID: 0}
     - target: {fileID: 2727499028609791013, guid: 537c9613868a1cd4e87a258589456a50, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1912,6 +1920,17 @@ CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 5054452162515266640, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
   m_PrefabInstance: {fileID: 5070799882668325103}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2633666343062824748 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7121229178936025027, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
+  m_PrefabInstance: {fileID: 5070799882668325103}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811c806d480a95647be41e4c8f76703c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3995947914792542423 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8154731214644025400, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
@@ -1932,6 +1951,8 @@ MonoBehaviour:
   turretPrefab: {fileID: -2173085730398545346, guid: 49660832e5b7c5144b5a3ae7e563cb2e, type: 3}
   guns:
   - {fileID: 7447248236129445465}
+  - {fileID: 4681166861963005127}
+  - {fileID: 2633666343062824748}
   input: {fileID: 4316601178502308323}
   manager: {fileID: 6751613137016704668}
   shopTooltip: {fileID: 965264904059445864}
@@ -1944,6 +1965,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4681166861963005127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 480127955866694696, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
+  m_PrefabInstance: {fileID: 5070799882668325103}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af413ed0f3234744b9a0b0c6d81f2447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &5203923162944300422 stripped

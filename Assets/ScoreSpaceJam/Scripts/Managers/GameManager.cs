@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace ScoreSpaceJam.Scripts.Managers
 {
@@ -59,6 +60,8 @@ namespace ScoreSpaceJam.Scripts.Managers
         public void GameOver()
         {
             currentState = GameState.GAME_OVER;
+
+            SceneManager.LoadScene("GameOver");
             
             OnChangeState();
         }

@@ -36,7 +36,7 @@ namespace ScoreSpaceJam.Scripts
         {
             if (manager.CurrentState == GameState.SHOPPING)
             {
-                shopTooltip.SetActive(unlockedGunsQuantity > 0);
+                shopTooltip.SetActive(unlockedGunsQuantity > 1);
             }
         }
         
@@ -70,7 +70,7 @@ namespace ScoreSpaceJam.Scripts
 
             guns[gunIndex].gameObject.SetActive(false);
             gunIndex--;
-            if (gunIndex < 0) gunIndex = unlockedGunsQuantity;
+            if (gunIndex < 0) gunIndex = unlockedGunsQuantity-1;
             guns[gunIndex].gameObject.SetActive(true);
         }
     }

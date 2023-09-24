@@ -13,6 +13,8 @@ namespace ScoreSpaceJam.Scripts.Shop
     
         public void Display(SaleableData data)
         {
+            if (data == null) return;
+            
             title.text = data.title;
             description.text = data.description;
             price.text = data.price.ToString();
