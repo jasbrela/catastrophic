@@ -1,43 +1,60 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace ScoreSpaceJam.Scripts
 {
     public class Health : MonoBehaviour
     {
+        [Header("General")]
+        [SerializeField] private float initialMaxHealth;
+        
+        [Header("Interface")]
+        [Tooltip("Optional")][SerializeField] private Image healthBackground;
+
+        [Header("Invulnerability")]
+        [SerializeField] private Collider2D col2D;
+        [SerializeField] private float invulnerabilityDuration;
+        
+        [Header("Events")]
         public UnityEvent onHit;
         public UnityEvent onDeath;
-        [SerializeField] private Image healthBackground;
-        [SerializeField] private float initialMaxHealth;
-        private float maxHealth;
-        public float MaxHealth { get => maxHealth; }
-        private float currentHealth;
+
+        public float MaxHealth => _maxHealth;
+        
+        private bool _isInvulnerable = false;
+        private float _maxHealth;
+        private float _currentHealth;
 
         private void Start()
         {
-            maxHealth = initialMaxHealth;
-            currentHealth = initialMaxHealth;
+            _maxHealth = initialMaxHealth;
+            _currentHealth = initialMaxHealth;
             UpdateUI();
         }
 
         public void Heal(float amount)
         {
-            currentHealth += amount;
+            _currentHealth += amount;
 
-            if (currentHealth >= maxHealth)
-                currentHealth = maxHealth;
+            if (_currentHealth >= _maxHealth)
+                _currentHealth = _maxHealth;
 
             UpdateUI();
         }
 
         public void Damage(float amount)
         {
-            currentHealth -= amount;
+            if (_isInvulnerable) return;
+            
+            _currentHealth -= amount;
+            if (col2D != null && invulnerabilityDuration > 0f) StartCoroutine(BecomeInvulnerable());
 
             onHit?.Invoke();
 
-            if (currentHealth <= 0)
+            if (_currentHealth <= 0)
                 Die();
 
             UpdateUI();
@@ -47,20 +64,31 @@ namespace ScoreSpaceJam.Scripts
         {
             if (healthBackground == null) return;
 
-            if (maxHealth == 0)
+            if (_maxHealth == 0)
             {
                 Debug.Log("Failed to update the UI: Division by 0.");
                 return;
             }
 
-            healthBackground.fillAmount = currentHealth / maxHealth;
+            healthBackground.fillAmount = _currentHealth / _maxHealth;
         }
 
         private void Die()
         {
             onDeath?.Invoke();
 
-            currentHealth = 0;
+            _currentHealth = 0;
+        }
+
+        private IEnumerator BecomeInvulnerable()
+        {
+            col2D.enabled = false;
+            _isInvulnerable = true;
+            
+            yield return new WaitForSecondsRealtime(invulnerabilityDuration);
+            
+            _isInvulnerable = false;
+            col2D.enabled = true;
         }
     }
 }

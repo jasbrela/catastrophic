@@ -239,7 +239,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1037821513697418601}
-  - component: {fileID: 5734643209054490478}
   - component: {fileID: 9059197660566657292}
   - component: {fileID: 4248133658642329337}
   - component: {fileID: 694196013282882320}
@@ -271,20 +270,6 @@ Transform:
   - {fileID: 6747020039992080386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5734643209054490478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8154731214644025400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7efb3b6e9bff7f1418da52fdb1c1221c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invulnerabilityTime: 1
-  col: {fileID: 5054452162515266640}
 --- !u!114 &9059197660566657292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,10 +342,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664795cd6dddfe741a334c334d71ca52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialMaxHealth: 100
+  healthBackground: {fileID: 0}
+  col2D: {fileID: 0}
+  invulnerabilityDuration: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5734643209054490478}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnHit
         m_Mode: 1
@@ -375,7 +364,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5734643209054490478}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
@@ -387,8 +376,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  healthBackground: {fileID: 0}
-  initialMaxHealth: 100
 --- !u!50 &5604645098626354388
 Rigidbody2D:
   serializedVersion: 4

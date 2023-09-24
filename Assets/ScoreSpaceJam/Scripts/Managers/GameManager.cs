@@ -8,29 +8,30 @@ namespace ScoreSpaceJam.Scripts.Managers
     {
         [SerializeField] private TextMeshProUGUI stateDebug;
         [SerializeField] private GameState currentState = GameState.SHOPPING;
-        
+        [SerializeField] private TextMeshProUGUI currencyText;
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private GameObject shoppingUI;
         [SerializeField] private GameObject pauseUI;
-        
         [SerializeField] private PlayerInput input;
-
-        private int _score;
-        private GameState _previousState;
         
         public GameState CurrentState => currentState;
+
+        private GameState _previousState;
+        private int _score;
+        private int _currency;
 
         private void Start()
         {
             pauseUI.SetActive(false);
             input.actions["Pause"].performed += TogglePause;
 
+            currencyText.text = "0";
             scoreText.text = "0";
 
 #if !UNITY_EDITOR
             stateDebug.enabled = false;
 #endif
-            stateDebug.text = currentState.ToString();
+            OnChangeState();
         }
 
         public void OnStartWave()
@@ -38,7 +39,7 @@ namespace ScoreSpaceJam.Scripts.Managers
             currentState = GameState.PLAYING;
             shoppingUI.SetActive(false);
             
-            stateDebug.text = currentState.ToString();
+            OnChangeState();
         }
 
         public void OnFinishWave()
@@ -46,17 +47,17 @@ namespace ScoreSpaceJam.Scripts.Managers
             currentState = GameState.SHOPPING;
             shoppingUI.SetActive(true);
             
-            stateDebug.text = currentState.ToString();
+            OnChangeState();
         }
 
         public void GameOver()
         {
             currentState = GameState.GAME_OVER;
             
-            stateDebug.text = currentState.ToString();
+            OnChangeState();
         }
-        
-        public void TogglePause(InputAction.CallbackContext ctx)
+
+        private void TogglePause(InputAction.CallbackContext ctx)
         {
             if (currentState == GameState.PAUSED)
             {
@@ -69,7 +70,7 @@ namespace ScoreSpaceJam.Scripts.Managers
                 currentState = GameState.PAUSED;
             }
             
-            stateDebug.text = currentState.ToString();
+            OnChangeState();
         }
 
         public void Resume()
@@ -77,13 +78,26 @@ namespace ScoreSpaceJam.Scripts.Managers
             pauseUI.SetActive(false);
             currentState = _previousState;
             
-            stateDebug.text = currentState.ToString();
+            OnChangeState();
         }
 
         public void Score(int score)
         {
             _score += score;
             scoreText.text = _score.ToString();
+        }
+
+        public void AddCurrency(int currency)
+        {
+            _currency += currency;
+            currencyText.text = currency.ToString();
+        }
+
+        private void OnChangeState()
+        {
+            //input.SwitchCurrentActionMap(currentState != GameState.PLAYING ? "UI" : "Game");
+            
+            stateDebug.text = currentState.ToString();
         }
     }
 }

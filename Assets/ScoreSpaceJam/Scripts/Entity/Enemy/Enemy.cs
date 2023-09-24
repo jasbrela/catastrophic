@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using ScoreSpaceJam.Scripts.Bullets;
 using ScoreSpaceJam.Scripts.Managers;
 using UnityEngine;
@@ -7,22 +10,24 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
 {
     public class Enemy : MonoBehaviour
     {
+        [HideInInspector] public GameManager gameManager;
+        
+        [SerializeField] private int currency;
         [SerializeField] private int score;
         [SerializeField] private Health health;
         [SerializeField] private float speed;
         [SerializeField] private float damage;
         [SerializeField] private bool destroyOnCollide;
+        
+        private Coroutine _hitCoroutine;
         private Transform _player;
         private Transform _base;
-
-        [HideInInspector] public GameManager gameManager;
-
+        private readonly List<Collider2D> _inside = new();
+        
         private void Start()
         {
             _player = GameObject.FindWithTag("Player").transform;
             _base = GameObject.FindWithTag("Base").transform;
-
-            //health.onDeath.AddListener(Disable);
         }
 
         public void RegisterOnDeathEvent(UnityAction call)
@@ -32,6 +37,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
 
         public void Disable()
         {
+            gameManager.AddCurrency(currency);
             gameManager.Score(score);
             Destroy(gameObject);
         }
@@ -59,22 +65,40 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
                 health.Damage(bullet.Damage);
                 bullet.OnHit();
             }
-            else if (other.gameObject.TryGetComponent(out Health otherHealth))
+            
+            if (other.gameObject.TryGetComponent(out Health otherHealth))
             {
                 otherHealth.Damage(damage);
                 if (destroyOnCollide)
-                    this.health.Damage(health.MaxHealth);
+                    health.Damage(health.MaxHealth);
             }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            TriggerLogic(other);
+            if (_inside.Contains(other)) return;
+            
+            _inside.Add(other);
+            
+            if (_hitCoroutine != null) return;
+            _hitCoroutine = StartCoroutine(Hit());
         }
 
-        void OnTriggerStay2D(Collider2D other)
+        private IEnumerator Hit()
         {
-            TriggerLogic(other);
+            while (_inside.Count > 0)
+            {
+                TriggerLogic(_inside[0]);
+                yield return new WaitForEndOfFrame();
+            }
+            
+            _hitCoroutine = null;
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (!_inside.Contains(other)) return;
+            _inside.Remove(other);
         }
     }
 }
