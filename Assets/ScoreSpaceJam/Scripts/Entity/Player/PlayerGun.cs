@@ -36,7 +36,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
             {
                 if (allowShooting) Shoot(Input.mousePosition);
                 allowShooting = false;
-                yield return new WaitForSeconds(FiringRate);
+                yield return new WaitForSeconds(1 / FiringRate);
                 allowShooting = true;
             }
 

@@ -1,3 +1,4 @@
+using ScoreSpaceJam.Scripts.Bullets;
 using ScoreSpaceJam.Scripts.Managers;
 using ScoreSpaceJam.Scripts.Utils;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace ScoreSpaceJam.Scripts.Entity
     {
         [SerializeField] private GameManager manager;
         [SerializeField] private float firingRate = 0.5f;
-        
+
         [SerializeField] private Transform muzzle;
         [SerializeField] private ObjectPool bulletPool;
 
@@ -30,18 +31,18 @@ namespace ScoreSpaceJam.Scripts.Entity
                 // negative feedback
                 return;
             }
-            
-            if (!go.TryGetComponent(out Bullet bullet))
+
+            if (!go.TryGetComponent(out BaseBullet bullet))
             {
                 Debug.Log("[BaseGun]".Bold() + " Missing Bullet script in Bullet Pool's prefab");
                 return;
             }
-            
+
             bullet.manager = manager;
 
             var dir = target - Camera.main.WorldToScreenPoint(transform.position);
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            
+
             go.transform.position = muzzle.position;
             go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 

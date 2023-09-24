@@ -2,17 +2,17 @@ using System.Collections;
 using ScoreSpaceJam.Scripts.Managers;
 using UnityEngine;
 
-namespace ScoreSpaceJam.Scripts
+namespace ScoreSpaceJam.Scripts.Bullets
 {
-    public class Bullet : MonoBehaviour
+    public class BaseBullet : MonoBehaviour
     {
         [SerializeField] private float damage = 1f;
         [SerializeField] private float speed = 5f;
         [SerializeField] private float lifetime = 2f;
         [SerializeField] private Rigidbody2D rb;
-        
+
         [HideInInspector] public GameManager manager;
-        
+
         public float Damage => damage;
         private void FixedUpdate()
         {
@@ -23,16 +23,16 @@ namespace ScoreSpaceJam.Scripts
             transform.Translate(Vector3.right * (speed * Time.deltaTime));
         }
 
-        public void OnShoot()
+        public virtual void OnShoot()
         {
             StartCoroutine(DisableAfterTime());
         }
 
-        public void OnHit()
+        public virtual void OnHit()
         {
             gameObject.SetActive(false);
         }
-        
+
         IEnumerator DisableAfterTime()
         {
             yield return new WaitForSeconds(lifetime);

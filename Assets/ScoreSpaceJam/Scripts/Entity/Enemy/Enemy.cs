@@ -1,3 +1,4 @@
+using ScoreSpaceJam.Scripts.Bullets;
 using ScoreSpaceJam.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.Events;
@@ -53,7 +54,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
 
         private void TriggerLogic(Collider2D other)
         {
-            if (other.TryGetComponent(out Bullet bullet))
+            if (other.TryGetComponent(out BaseBullet bullet))
             {
                 health.Damage(bullet.Damage);
                 bullet.OnHit();

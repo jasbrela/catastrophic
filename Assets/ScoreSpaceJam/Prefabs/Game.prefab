@@ -501,7 +501,6 @@ Transform:
   - {fileID: 6428947955527052595}
   - {fileID: 5203923162944300422}
   - {fileID: 6049680108712781030}
-  - {fileID: 1414959601797503423}
   - {fileID: 2983015250309301911}
   - {fileID: 7009928491584898772}
   - {fileID: 5977051650087496846}
@@ -509,7 +508,40 @@ Transform:
   - {fileID: 5868526212685042504}
   - {fileID: 5267231912939038993}
   - {fileID: 5914703565989492562}
+  - {fileID: 845431665076806869}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6322827377646764714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845431665076806869}
+  m_Layer: 0
+  m_Name: ObjectPools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &845431665076806869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322827377646764714}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.8853439, y: -1.8331418, z: 0.5745121}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1414959601797503423}
+  m_Father: {fileID: 6295737492314980117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7157806636836025039
 GameObject:
@@ -612,11 +644,11 @@ Transform:
   m_GameObject: {fileID: 7489955068106154180}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.8853439, y: 1.8331418, z: -0.5745121}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6295737492314980117}
+  m_Father: {fileID: 845431665076806869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4489631640659131125
 MonoBehaviour:
@@ -1718,6 +1750,14 @@ PrefabInstance:
       propertyPath: remainingEnemiesUI
       value: 
       objectReference: {fileID: 494644704845069625}
+    - target: {fileID: 2379846123598634678, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 6751613137016704668}
+    - target: {fileID: 2379846123598634678, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
+      propertyPath: bulletPool
+      value: 
+      objectReference: {fileID: 4489631640659131125}
     - target: {fileID: 2947625252415912156, guid: 3834734e676c431448ac1528c1f778bc, type: 3}
       propertyPath: manager
       value: 
