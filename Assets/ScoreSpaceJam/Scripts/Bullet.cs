@@ -24,6 +24,11 @@ namespace ScoreSpaceJam.Scripts
             StartCoroutine(DisableAfterTime());
         }
 
+        public void OnHit()
+        {
+            gameObject.SetActive(false);
+        }
+        
         IEnumerator DisableAfterTime()
         {
             yield return new WaitForSeconds(lifetime);

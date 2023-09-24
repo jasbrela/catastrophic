@@ -33,6 +33,7 @@ namespace ScoreSpaceJam.Scripts
             if (other.TryGetComponent(out Bullet bullet))
             {
                 health.Damage(bullet.Damage);
+                bullet.OnHit();
             }
         }
     }
