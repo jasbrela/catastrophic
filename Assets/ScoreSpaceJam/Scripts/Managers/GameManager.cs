@@ -23,7 +23,7 @@ namespace ScoreSpaceJam.Scripts.Managers
 
         private GameState _previousState;
         private int _score;
-        private int _currency = 10;
+        private int _currency = 0;
 
         private void Start()
         {
