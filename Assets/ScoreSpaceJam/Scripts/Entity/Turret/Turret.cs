@@ -6,7 +6,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Turret
     public class Turret : MonoBehaviour
     {
         [HideInInspector] public GameManager manager;
-        
+
         [SerializeField] private TurretGun gun;
         [SerializeField] private TurretHandRotation handRot;
 
@@ -15,6 +15,11 @@ namespace ScoreSpaceJam.Scripts.Entity.Turret
             manager = gm;
             handRot.manager = gm;
             gun.manager = gm;
+        }
+
+        public void RegisterGunBulletPool(ObjectPool pool)
+        {
+            gun.RegisterGunBulletPool(pool);
         }
     }
 }

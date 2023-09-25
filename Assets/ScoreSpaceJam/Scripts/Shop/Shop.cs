@@ -7,20 +7,21 @@ namespace ScoreSpaceJam.Scripts.Shop
     {
         [SerializeField] private GameObject shoppingUI;
         [SerializeField] private PlayerInventory inventory;
-        
+
         [Header("Gun")]
         [SerializeField] private SaleableData firstGun;
         [SerializeField] private SaleableUI gunUI;
-        
+
         [Header("Upgrade")]
         [SerializeField] private SaleableData firstUpgrade;
         [SerializeField] private SaleableUI upgradeUI;
-        
+
         [Header("Turret")]
         [SerializeField] private SaleableData firstTurret;
         [SerializeField] private SaleableUI turretUI;
+        [SerializeField] private ObjectPool turretGunPool;
         [SerializeField] private float priceMultiplier;
-        
+
         [HideInInspector] public GameManager manager;
 
         private SaleableData currentGun;
@@ -28,42 +29,48 @@ namespace ScoreSpaceJam.Scripts.Shop
         private SaleableData currentTurret;
 
         private int turretCount = 0;
-        
+
         private void Start()
         {
             ToggleButtonsVisibility(false, true);
-            
+
             currentGun = firstGun;
             currentUpgrade = firstUpgrade;
             currentTurret = firstTurret;
-            
+
             upgradeUI.gameObject.SetActive(false);
         }
-        
+
+        void OnEnable()
+        {
+            if (currentTurret != null)
+                turretUI.Display(currentTurret, Mathf.CeilToInt(currentTurret.price + currentTurret.price * priceMultiplier * turretCount));
+        }
+
         private SaleableData BuySaleable(SaleableData data, SaleableUI ui)
         {
             if (manager.CurrentMoney < data.price) return data;
-            
+
             manager.SpendCurrency(data.price);
 
             data = data.nextSaleable;
-                
+
             if (data == null)
             {
                 ui.gameObject.SetActive(false);
                 return null;
             }
-                
+
             ui.Display(data);
             return data;
         }
-        
+
         public void BuyGun()
         {
             var item = BuySaleable(currentGun, gunUI);
-            
+
             if (item == currentGun) return;
-            
+
             currentGun = item;
             inventory.UnlockWeapon();
         }
@@ -71,19 +78,19 @@ namespace ScoreSpaceJam.Scripts.Shop
         public void BuyGunUpgrade() => currentUpgrade = BuySaleable(currentUpgrade, upgradeUI);
         public void BuyTurret()
         {
-            var price = Mathf.CeilToInt( currentTurret.price + currentTurret.price * priceMultiplier * turretCount);
-            
+            var price = Mathf.CeilToInt(currentTurret.price + currentTurret.price * priceMultiplier * turretCount);
+
             if (manager.CurrentMoney < price) return;
-            
+
             manager.SpendCurrency(price);
-            
+
             turretCount++;
-            
-            price = Mathf.CeilToInt( currentTurret.price + currentTurret.price * priceMultiplier * turretCount);
-            
+
+            price = Mathf.CeilToInt(currentTurret.price + currentTurret.price * priceMultiplier * turretCount);
+
             turretUI.Display(currentTurret, price);
-            
-            inventory.PlaceTurret();
+
+            inventory.PlaceTurret(turretGunPool);
         }
 
         public void ShowUI() => shoppingUI.gameObject.SetActive(true);
@@ -108,7 +115,7 @@ namespace ScoreSpaceJam.Scripts.Shop
             //upgradeUI.Display(currentUpgrade);
             turretUI.Display(currentTurret);
         }
-        
-        
+
+
     }
 }

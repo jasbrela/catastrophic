@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 254836734401738410}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.751, y: -0.156, z: 0}
+  m_LocalPosition: {x: 0.9, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -114920556, guid: f8a5979daa6b392498540f09bc41d6fc, type: 3}
+  m_Sprite: {fileID: 1737965511, guid: 0f37595e88faf69489f8b4b632714b5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -206,6 +206,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7961370933078388084, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
+      propertyPath: initialMaxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7961370933078388084, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5981367352414796649}
@@ -287,7 +291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5204184856995181532, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: m_Name
-      value: DogLv2
+      value: Ranged1_DogLv1
       objectReference: {fileID: 0}
     - target: {fileID: 6720990016889194878, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: m_Sprite
@@ -332,7 +336,7 @@ PrefabInstance:
     - target: {fileID: 7693742692935630827, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 715632827, guid: f8a5979daa6b392498540f09bc41d6fc, type: 3}
+      objectReference: {fileID: -479349519, guid: 0f37595e88faf69489f8b4b632714b5e, type: 3}
     m_RemovedComponents:
     - {fileID: -8573387834386978592, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
     m_RemovedGameObjects: []
@@ -366,10 +370,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  currency: 1
-  score: 10
+  currency: 2
+  score: 15
   health: {fileID: 7740938666383561448}
-  speed: 2
+  speed: 1
   damage: 5
   destroyOnCollide: 0
   manager: {fileID: 0}

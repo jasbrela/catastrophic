@@ -35,7 +35,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
         {
             isHolding = true;
             if (shootingCoroutine == null)
-                shootingCoroutine = StartCoroutine(KeepShooting(Input.mousePosition));
+                shootingCoroutine = StartCoroutine(KeepShooting());
         }
 
         private void ButtonUp(InputAction.CallbackContext ctx)
@@ -43,11 +43,11 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
             isHolding = false;
         }
 
-        protected IEnumerator KeepShooting(Vector3 target)
+        protected IEnumerator KeepShooting()
         {
             while (isHolding)
             {
-                if (allowShooting) Shoot(target);
+                if (allowShooting) Shoot(Input.mousePosition);
                 allowShooting = false;
                 yield return new WaitForSeconds(1 / FiringRate);
                 allowShooting = true;

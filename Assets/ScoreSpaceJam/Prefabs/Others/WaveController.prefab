@@ -44,11 +44,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1ad1c8d35c5dd45aac6582e8960b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWaveText: {fileID: 0}
   manager: {fileID: 0}
   input: {fileID: 0}
   waves:
   - {fileID: 11400000, guid: ce5d30587d5faa84bade290ad609ede1, type: 2}
   - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: d41419bacb7c4b941aff180027e2a58d, type: 2}
+  - {fileID: 11400000, guid: 1d80ba473838447498df6cbb1ab34ab2, type: 2}
+  - {fileID: 11400000, guid: 28d016e4abf05f54baa76560d37a7acb, type: 2}
+  - {fileID: 11400000, guid: c66e7f54d76e68e4aa5ad7a6ce5df9cd, type: 2}
+  - {fileID: 11400000, guid: 9804ab30316242944b4c868988b55882, type: 2}
+  - {fileID: 11400000, guid: 9b64ea68d5a9edb4fb02f0de1f8e6121, type: 2}
   onStartWave:
     m_PersistentCalls:
       m_Calls: []

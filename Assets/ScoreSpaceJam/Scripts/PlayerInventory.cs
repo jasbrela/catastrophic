@@ -12,7 +12,7 @@ namespace ScoreSpaceJam.Scripts
     {
         [Header("Turret")]
         [SerializeField] private Turret turretPrefab;
-        
+
         [Header("Guns")]
         [SerializeField] private List<BaseGun> guns;
         [SerializeField] private PlayerInput input;
@@ -26,9 +26,9 @@ namespace ScoreSpaceJam.Scripts
         {
             input.actions["NextWeapon"].performed += NextWeapon;
             input.actions["PreviousWeapon"].performed += PreviousWeapon;
-            
+
             shopTooltip.SetActive(false);
-            
+
             manager.onChangeState.AddListener(OnChangeState);
         }
 
@@ -39,27 +39,28 @@ namespace ScoreSpaceJam.Scripts
                 shopTooltip.SetActive(unlockedGunsQuantity > 1);
             }
         }
-        
+
         public void UnlockWeapon()
         {
             if (guns.Count == unlockedGunsQuantity) return;
             unlockedGunsQuantity++;
-            
+
             shopTooltip.SetActive(true);
         }
 
-        public void PlaceTurret()
+        public void PlaceTurret(ObjectPool bulletPool)
         {
             var t = transform;
-            
+
             Turret turret = Instantiate(turretPrefab, t.position, t.rotation);
             turret.RegisterGameManager(manager);
+            turret.RegisterGunBulletPool(bulletPool);
         }
 
         private void NextWeapon(InputAction.CallbackContext callbackContext)
         {
             if (manager.CurrentState != GameState.SHOPPING) return;
-            
+
             guns[gunIndex].gameObject.SetActive(false);
             gunIndex++;
             if (gunIndex >= unlockedGunsQuantity) gunIndex = 0;
@@ -72,7 +73,7 @@ namespace ScoreSpaceJam.Scripts
 
             guns[gunIndex].gameObject.SetActive(false);
             gunIndex--;
-            if (gunIndex < 0) gunIndex = unlockedGunsQuantity-1;
+            if (gunIndex < 0) gunIndex = unlockedGunsQuantity - 1;
             guns[gunIndex].gameObject.SetActive(true);
         }
     }

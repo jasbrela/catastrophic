@@ -15,11 +15,12 @@ namespace ScoreSpaceJam.Scripts.Waves
         [SerializeField] private PlayerInput input;
         [SerializeField] private List<WaveData> waves = new();
         public UnityEvent onStartWave;
-        
+
         public WaveData CurrentWave => _current;
         private WaveData _current;
 
         private int currentIndex = -1;
+        private int fakeWaveIndex = 0;
 
         private void Start()
         {
@@ -33,12 +34,13 @@ namespace ScoreSpaceJam.Scripts.Waves
                 NextWave();
             }
         }
-        
+
         public void NextWave()
         {
-            currentIndex++;
             if (waves.Count > currentIndex)
             {
+                currentIndex++;
+                fakeWaveIndex = currentIndex;
                 _current = waves[currentIndex];
                 manager.OnStartWave();
                 currentWaveText.text = (currentIndex + 1).ToString();
@@ -46,7 +48,11 @@ namespace ScoreSpaceJam.Scripts.Waves
             }
             else
             {
-                Debug.Log("Finish");
+                fakeWaveIndex++;
+                _current = waves[currentIndex];
+                manager.OnStartWave();
+                currentWaveText.text = (fakeWaveIndex + 1).ToString();
+                onStartWave?.Invoke();
             }
         }
     }

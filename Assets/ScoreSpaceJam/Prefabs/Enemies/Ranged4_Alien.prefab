@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  firingRate: 2
+  firingRate: 6
   muzzle: {fileID: 4513747038407763202}
   bulletPool: {fileID: 0}
 --- !u!1 &947040491051043086
@@ -206,6 +206,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7961370933078388084, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
+      propertyPath: initialMaxHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -7961370933078388084, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5981367352414796649}
@@ -235,11 +239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5184783136227100358, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5184783136227100358, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5184783136227100358, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -287,7 +291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5204184856995181532, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: m_Name
-      value: Alien
+      value: Ranged4_Alien
       objectReference: {fileID: 0}
     - target: {fileID: 6720990016889194878, guid: b9f288b28c8bb6f4fafe3bbfc3575dd2, type: 3}
       propertyPath: m_Sprite
@@ -370,11 +374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  currency: 1
-  score: 10
+  currency: 15
+  score: 200
   health: {fileID: 7740938666383561448}
-  speed: 2
-  damage: 5
+  speed: 4
+  damage: 20
   destroyOnCollide: 0
   manager: {fileID: 0}
   gun: {fileID: 2496457396913789058}
