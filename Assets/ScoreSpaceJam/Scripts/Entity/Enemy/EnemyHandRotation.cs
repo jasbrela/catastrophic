@@ -3,9 +3,9 @@ using System.Linq;
 using ScoreSpaceJam.Scripts.Managers;
 using UnityEngine;
 
-namespace ScoreSpaceJam.Scripts.Entity.Turret
+namespace ScoreSpaceJam.Scripts.Entity.Enemy
 {
-    public class TurretHandRotation : BaseHandRotation
+    public class EnemyHandRotation : BaseHandRotation
     {
         [SerializeField] private BaseGun gun;
         [SerializeField] private LayerMask targetLayer;
@@ -14,6 +14,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Turret
 
         private readonly Collider2D[] results = new Collider2D[5];
         private Collider2D[] ordered;
+        public float Radius { get => radius; }
 
         protected override void Initialize()
         {
@@ -27,6 +28,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Turret
             while (manager.CurrentState != GameState.GAME_OVER)
             {
                 while (manager.CurrentState != GameState.PLAYING) yield return null;
+                while (ordered == null) yield return null;
                 while (ordered.Length == 0) yield return null;
 
                 gun.Shoot(Camera.main.WorldToScreenPoint(ordered[0].transform.position));

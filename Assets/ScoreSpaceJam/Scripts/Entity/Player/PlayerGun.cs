@@ -8,9 +8,10 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
     public class PlayerGun : BaseGun
     {
         [SerializeField] private PlayerInput input;
-        private bool isHolding;
-        private bool allowShooting = true;
-        Coroutine shootingCoroutine = null;
+
+        protected bool isHolding;
+        protected bool allowShooting = true;
+        protected Coroutine shootingCoroutine = null;
 
         private void OnEnable()
         {
@@ -34,7 +35,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
         {
             isHolding = true;
             if (shootingCoroutine == null)
-                shootingCoroutine = StartCoroutine(KeepShooting());
+                shootingCoroutine = StartCoroutine(KeepShooting(Input.mousePosition));
         }
 
         private void ButtonUp(InputAction.CallbackContext ctx)
@@ -42,11 +43,11 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
             isHolding = false;
         }
 
-        private IEnumerator KeepShooting()
+        protected IEnumerator KeepShooting(Vector3 target)
         {
             while (isHolding)
             {
-                if (allowShooting) Shoot(Input.mousePosition);
+                if (allowShooting) Shoot(target);
                 allowShooting = false;
                 yield return new WaitForSeconds(1 / FiringRate);
                 allowShooting = true;

@@ -14,7 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2198849568567781349, guid: f9d6d473657cae449953b482904d920c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.277
+      value: 0.944
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198849568567781349, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.208
       objectReference: {fileID: 0}
     - target: {fileID: 4771822702280909419, guid: f9d6d473657cae449953b482904d920c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5047489200111703111, guid: f9d6d473657cae449953b482904d920c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bb2a4cc31cca7647954a9734603f586, type: 3}
     - target: {fileID: 6698916751630159336, guid: f9d6d473657cae449953b482904d920c, type: 3}
       propertyPath: m_Name
       value: PlayerMachineGun

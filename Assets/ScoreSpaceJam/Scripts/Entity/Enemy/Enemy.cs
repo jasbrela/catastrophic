@@ -11,19 +11,19 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
     public class Enemy : MonoBehaviour
     {
         [HideInInspector] public GameManager gameManager;
-        
+
         [SerializeField] private int currency;
         [SerializeField] private int score;
         [SerializeField] private Health health;
         [SerializeField] private float speed;
         [SerializeField] private float damage;
         [SerializeField] private bool destroyOnCollide;
-        
+
         private Coroutine _hitCoroutine;
-        private Transform _player;
-        private Transform _base;
+        protected Transform _player;
+        protected Transform _base;
         private readonly List<Collider2D> _inside = new();
-        
+
         private void Start()
         {
             _player = GameObject.FindWithTag("Player").transform;
@@ -33,6 +33,11 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
         public void RegisterOnDeathEvent(UnityAction call)
         {
             health.onDeath.AddListener(call);
+        }
+
+        public virtual void RegisterGameManager(GameManager gm)
+        {
+            gameManager = gm;
         }
 
         public void Disable()
@@ -49,7 +54,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
             transform.position = Vector3.MoveTowards(transform.position, GetClosestTarget(), speed * Time.deltaTime);
         }
 
-        private Vector3 GetClosestTarget()
+        protected virtual Vector3 GetClosestTarget()
         {
             var currentPos = transform.position;
 
@@ -65,7 +70,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
                 health.Damage(bullet.Damage);
                 bullet.OnHit();
             }
-            
+
             if (other.gameObject.TryGetComponent(out Health otherHealth))
             {
                 otherHealth.Damage(damage);
@@ -77,9 +82,9 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_inside.Contains(other)) return;
-            
+
             _inside.Add(other);
-            
+
             if (_hitCoroutine != null) return;
             _hitCoroutine = StartCoroutine(Hit());
         }
@@ -91,7 +96,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
                 TriggerLogic(_inside[0]);
                 yield return new WaitForEndOfFrame();
             }
-            
+
             _hitCoroutine = null;
         }
 
