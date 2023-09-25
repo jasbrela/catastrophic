@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bebc104eb44799c46bd1242c989a89c6, type: 3}
+  m_Name: Wave 17 (RoombaTime)
+  m_EditorClassIdentifier: 
+  delay: 0.4
+  enemies:
+  - enemy: {fileID: 8353021538926831748, guid: 4dc34b6f06c51e7488cb09bab9e8f8e4, type: 3}
+    quantity: 35
+  - enemy: {fileID: 8353021538926831748, guid: 4dc34b6f06c51e7488cb09bab9e8f8e4, type: 3}
+    quantity: 35

@@ -70,6 +70,7 @@ namespace ScoreSpaceJam.Scripts.Waves
             _killCount = 0;
 
             StartCoroutine(Spawn());
+            UpdateUI();
         }
 
         private IEnumerator Spawn()
