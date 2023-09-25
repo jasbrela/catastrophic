@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 namespace ScoreSpaceJam.Scripts.Managers
 {
-    public class LootLockerManager : MonoBehaviour
+    public class LootLockerManager : MonoBehaviourSingleton<LootLockerManager>
     {
         [SerializeField] private Button leaderboard;
         public bool SessionStarted { get; private set; }
 
         private string playerIdentifier;
-        private const string DefaultLeaderboardKey = "dev_leaderboard";
+        private const string DefaultLeaderboardKey = "default_leaderboard";
 
         private async void Start()
         {
             leaderboard.interactable = false;
-            
+
             await TryStartGuestSession();
         }
 

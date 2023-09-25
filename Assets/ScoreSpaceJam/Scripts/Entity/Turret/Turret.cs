@@ -21,5 +21,10 @@ namespace ScoreSpaceJam.Scripts.Entity.Turret
         {
             gun.RegisterGunBulletPool(pool);
         }
+
+        public void Disable()
+        {
+            Destroy(gameObject);
+        }
     }
 }

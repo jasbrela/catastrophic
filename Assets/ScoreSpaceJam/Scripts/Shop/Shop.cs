@@ -29,6 +29,7 @@ namespace ScoreSpaceJam.Scripts.Shop
         private SaleableData currentTurret;
 
         private int turretCount = 0;
+        private int actualTurretPrice => Mathf.CeilToInt(currentTurret.price + currentTurret.price * priceMultiplier * turretCount);
 
         private void Start()
         {
@@ -44,7 +45,7 @@ namespace ScoreSpaceJam.Scripts.Shop
         void OnEnable()
         {
             if (currentTurret != null)
-                turretUI.Display(currentTurret, Mathf.CeilToInt(currentTurret.price + currentTurret.price * priceMultiplier * turretCount));
+                turretUI.Display(currentTurret, actualTurretPrice);
         }
 
         private SaleableData BuySaleable(SaleableData data, SaleableUI ui)
@@ -78,7 +79,7 @@ namespace ScoreSpaceJam.Scripts.Shop
         public void BuyGunUpgrade() => currentUpgrade = BuySaleable(currentUpgrade, upgradeUI);
         public void BuyTurret()
         {
-            var price = Mathf.CeilToInt(currentTurret.price + currentTurret.price * priceMultiplier * turretCount);
+            var price = actualTurretPrice;
 
             if (manager.CurrentMoney < price) return;
 
@@ -86,7 +87,7 @@ namespace ScoreSpaceJam.Scripts.Shop
 
             turretCount++;
 
-            price = Mathf.CeilToInt(currentTurret.price + currentTurret.price * priceMultiplier * turretCount);
+            price = actualTurretPrice;
 
             turretUI.Display(currentTurret, price);
 
@@ -104,16 +105,41 @@ namespace ScoreSpaceJam.Scripts.Shop
 
         private void ToggleButtonsVisibility(bool visible, bool force = false)
         {
-            if (force || manager.CurrentMoney > currentGun.price) gunUI.gameObject.SetActive(visible);
-            //if (force || manager.CurrentMoney > currentUpgrade.price) upgradeUI.gameObject.SetActive(visible);
-            if (force || manager.CurrentMoney > currentTurret.price) turretUI.gameObject.SetActive(visible);
+            if (force)
+            {
+                gunUI.gameObject.SetActive(visible);
+                turretUI.gameObject.SetActive(visible);
+            }
+            else
+            {
+                if (currentGun != null)
+                {
+                    if (manager.CurrentMoney > currentGun.price)
+                        gunUI.gameObject.SetActive(visible);
+                }
+
+                if (currentTurret != null)
+                {
+                    if (manager.CurrentMoney > actualTurretPrice)
+                        turretUI.gameObject.SetActive(visible);
+                }
+            }
+            // if (currentGun != null)
+            //     if (force || manager.CurrentMoney > currentGun.price) gunUI.gameObject.SetActive(visible);
+            //     else gunUI.gameObject.SetActive(false);
+
+            // //if (force || manager.CurrentMoney > currentUpgrade.price) upgradeUI.gameObject.SetActive(visible);
+
+            // if (currentTurret != null)
+            //     if (force || manager.CurrentMoney > currentTurret.price) turretUI.gameObject.SetActive(visible);
+            //     else turretUI.gameObject.SetActive(false);
         }
 
         private void UpdateDisplay()
         {
             gunUI.Display(currentGun);
             //upgradeUI.Display(currentUpgrade);
-            turretUI.Display(currentTurret, Mathf.CeilToInt(currentTurret.price + currentTurret.price * priceMultiplier * turretCount));
+            turretUI.Display(currentTurret, actualTurretPrice);
         }
 
 

@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: While shopping, you can change your guns by pressing Q / E
+  m_text: You can change your guns by pressing <color=yellow>Q / E</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c79b072d5083ea048a0e58d0fdfc71f6, type: 2}
   m_sharedMaterial: {fileID: -5794522962846536514, guid: c79b072d5083ea048a0e58d0fdfc71f6, type: 2}

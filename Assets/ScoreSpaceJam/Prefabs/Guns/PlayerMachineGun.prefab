@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 463771959953359031, guid: f9d6d473657cae449953b482904d920c, type: 3}
       propertyPath: firingRate
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2198849568567781349, guid: f9d6d473657cae449953b482904d920c, type: 3}
       propertyPath: m_LocalPosition.x

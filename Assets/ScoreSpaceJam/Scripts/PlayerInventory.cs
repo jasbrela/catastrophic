@@ -59,7 +59,8 @@ namespace ScoreSpaceJam.Scripts
 
         private void NextWeapon(InputAction.CallbackContext callbackContext)
         {
-            if (manager.CurrentState != GameState.SHOPPING) return;
+            if (manager.CurrentState == GameState.PAUSED
+            || manager.CurrentState == GameState.GAME_OVER) return;
 
             guns[gunIndex].gameObject.SetActive(false);
             gunIndex++;
@@ -69,7 +70,8 @@ namespace ScoreSpaceJam.Scripts
 
         private void PreviousWeapon(InputAction.CallbackContext callbackContext)
         {
-            if (manager.CurrentState != GameState.SHOPPING) return;
+            if (manager.CurrentState == GameState.PAUSED
+            || manager.CurrentState == GameState.GAME_OVER) return;
 
             guns[gunIndex].gameObject.SetActive(false);
             gunIndex--;

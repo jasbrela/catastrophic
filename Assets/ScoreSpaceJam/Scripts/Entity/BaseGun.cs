@@ -10,6 +10,7 @@ namespace ScoreSpaceJam.Scripts.Entity
         public GameManager manager;
         [SerializeField] protected float firingRate = 0.5f;
 
+        [SerializeField] protected AudioSource sfxSource;
         [SerializeField] protected Transform muzzle;
         [SerializeField] protected ObjectPool bulletPool;
 
@@ -48,6 +49,7 @@ namespace ScoreSpaceJam.Scripts.Entity
 
             go.SetActive(true);
             bullet.OnShoot();
+            sfxSource.Play();
         }
     }
 }

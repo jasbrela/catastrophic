@@ -37,6 +37,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Player
 
                 go.SetActive(true);
                 bullet.OnShoot();
+                sfxSource.Play();
             }
         }
     }
