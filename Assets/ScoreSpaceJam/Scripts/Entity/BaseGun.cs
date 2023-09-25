@@ -25,6 +25,9 @@ namespace ScoreSpaceJam.Scripts.Entity
 
         public virtual void Shoot(Vector3 target)
         {
+            if (manager.CurrentState is GameState.GAME_OVER or GameState.PAUSED)
+                return;
+
             var go = bulletPool.GetObject();
 
             if (go == null)

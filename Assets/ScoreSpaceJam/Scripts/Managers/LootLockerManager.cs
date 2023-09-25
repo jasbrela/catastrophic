@@ -8,7 +8,6 @@ namespace ScoreSpaceJam.Scripts.Managers
 {
     public class LootLockerManager : MonoBehaviourSingleton<LootLockerManager>
     {
-        [SerializeField] private Button leaderboard;
         public bool SessionStarted { get; private set; }
 
         private string playerIdentifier;
@@ -16,8 +15,6 @@ namespace ScoreSpaceJam.Scripts.Managers
 
         private async void Start()
         {
-            leaderboard.interactable = false;
-
             await TryStartGuestSession();
         }
 
@@ -35,7 +32,6 @@ namespace ScoreSpaceJam.Scripts.Managers
 
             Debug.Log($"[{name}]: ".Bold() + $"Guest session successfully started!");
             playerIdentifier = response.player_identifier;
-            leaderboard.interactable = true;
             return SessionStarted;
         }
 

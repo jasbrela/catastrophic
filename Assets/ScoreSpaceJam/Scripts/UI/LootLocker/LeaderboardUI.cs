@@ -6,7 +6,6 @@ namespace ScoreSpaceJam.Scripts.UI.LootLocker
 {
     public class LeaderboardUI : MonoBehaviour
     {
-        [SerializeField] private LootLockerManager lootLockerManager;
         [SerializeField] private LeaderboardEntryUI entryPrefab;
         [SerializeField] private RectTransform entriesHolder;
 
@@ -22,7 +21,7 @@ namespace ScoreSpaceJam.Scripts.UI.LootLocker
                 Destroy(child.gameObject);
             }
 
-            LootLockerLeaderboardMember[] members = await lootLockerManager.GetLeaderboardScores(9);
+            LootLockerLeaderboardMember[] members = await LootLockerManager.Instance.GetLeaderboardScores(9);
 
             foreach (LootLockerLeaderboardMember member in members)
             {

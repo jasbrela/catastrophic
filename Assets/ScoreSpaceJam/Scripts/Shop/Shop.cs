@@ -114,13 +114,13 @@ namespace ScoreSpaceJam.Scripts.Shop
             {
                 if (currentGun != null)
                 {
-                    if (manager.CurrentMoney > currentGun.price)
+                    if (manager.CurrentMoney >= currentGun.price)
                         gunUI.gameObject.SetActive(visible);
                 }
 
                 if (currentTurret != null)
                 {
-                    if (manager.CurrentMoney > actualTurretPrice)
+                    if (manager.CurrentMoney >= actualTurretPrice)
                         turretUI.gameObject.SetActive(visible);
                 }
             }
