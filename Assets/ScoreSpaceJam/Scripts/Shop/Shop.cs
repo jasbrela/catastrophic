@@ -113,7 +113,7 @@ namespace ScoreSpaceJam.Scripts.Shop
         {
             gunUI.Display(currentGun);
             //upgradeUI.Display(currentUpgrade);
-            turretUI.Display(currentTurret);
+            turretUI.Display(currentTurret, Mathf.CeilToInt(currentTurret.price + currentTurret.price * priceMultiplier * turretCount));
         }
 
 
