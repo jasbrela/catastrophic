@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  flip: {fileID: 2615813973864859524}
   currency: 1
   score: 10
   health: {fileID: -7961370933078388084}
@@ -70,6 +71,7 @@ MonoBehaviour:
   initialMaxHealth: 10
   healthBackground: {fileID: 0}
   col2D: {fileID: 0}
+  animator: {fileID: 0}
   invulnerabilityDuration: 0
   onHit:
     m_PersistentCalls:

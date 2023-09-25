@@ -27,7 +27,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
             gun.RegisterBulletPool(bulletPool);
         }
 
-        protected override Vector3 GetClosestTarget()
+        protected override Vector3 GetClosestTargetPosition()
         {
             Vector3 currentPos = transform.position;
             Vector3 targetPos;

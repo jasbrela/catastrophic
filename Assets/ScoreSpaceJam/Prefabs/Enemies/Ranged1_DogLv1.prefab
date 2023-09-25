@@ -468,6 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  flip: {fileID: 0}
   currency: 2
   score: 15
   health: {fileID: 7740938666383561448}

@@ -11,7 +11,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
     public class Enemy : MonoBehaviour
     {
         [HideInInspector] public GameManager gameManager;
-
+        [SerializeField] private Transform flip;
         [SerializeField] private int currency;
         [SerializeField] private int score;
         [SerializeField] private Health health;
@@ -19,6 +19,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
         [SerializeField] private float damage;
         [SerializeField] private bool destroyOnCollide;
 
+        private Vector3 _defaultScale;
         private Coroutine _hitCoroutine;
         protected Transform _player;
         protected Transform _base;
@@ -26,6 +27,7 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
 
         private void Start()
         {
+            if (flip != null) _defaultScale = flip.localScale;
             _player = GameObject.FindWithTag("Player").transform;
             _base = GameObject.FindWithTag("Base").transform;
         }
@@ -51,10 +53,14 @@ namespace ScoreSpaceJam.Scripts.Entity.Enemy
         {
             if (_player == null) return;
             if (gameManager == null || gameManager.CurrentState != GameState.PLAYING) return;
-            transform.position = Vector3.MoveTowards(transform.position, GetClosestTarget(), speed * Time.deltaTime);
+            var targetPos = GetClosestTargetPosition();
+            
+            if (flip != null) flip.localScale = targetPos.x > transform.position.x ? new Vector3(_defaultScale.x * -1, _defaultScale.y, _defaultScale.z) : _defaultScale;
+            
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         }
 
-        protected virtual Vector3 GetClosestTarget()
+        protected virtual Vector3 GetClosestTargetPosition()
         {
             var currentPos = transform.position;
 
