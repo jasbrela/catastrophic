@@ -10,20 +10,21 @@ namespace ScoreSpaceJam.Scripts
     {
         [Header("General")]
         [SerializeField] private float initialMaxHealth;
-        
+
         [Header("Interface")]
         [Tooltip("Optional")][SerializeField] private Image healthBackground;
 
         [Header("Invulnerability")]
         [SerializeField] private Collider2D col2D;
+        [SerializeField] private Animator animator;
         [SerializeField] private float invulnerabilityDuration;
-        
+
         [Header("Events")]
         public UnityEvent onHit;
         public UnityEvent onDeath;
 
         public float MaxHealth => _maxHealth;
-        
+
         private bool _isInvulnerable = false;
         private float _maxHealth;
         private float _currentHealth;
@@ -48,7 +49,7 @@ namespace ScoreSpaceJam.Scripts
         public void Damage(float amount)
         {
             if (_isInvulnerable) return;
-            
+
             _currentHealth -= amount;
             if (col2D != null && invulnerabilityDuration > 0f) StartCoroutine(BecomeInvulnerable());
 
@@ -82,12 +83,14 @@ namespace ScoreSpaceJam.Scripts
 
         private IEnumerator BecomeInvulnerable()
         {
+            if (animator != null) animator.SetBool("Invulnerable", true);
             col2D.enabled = false;
             _isInvulnerable = true;
-            
+
             yield return new WaitForSecondsRealtime(invulnerabilityDuration);
-            
+
             _isInvulnerable = false;
+            if (animator != null) animator.SetBool("Invulnerable", false);
             col2D.enabled = true;
         }
     }

@@ -297,6 +297,7 @@ MonoBehaviour:
   initialMaxHealth: 100
   healthBackground: {fileID: 0}
   col2D: {fileID: 0}
+  animator: {fileID: 2281397735430184545}
   invulnerabilityDuration: 0
   onHit:
     m_PersistentCalls:
